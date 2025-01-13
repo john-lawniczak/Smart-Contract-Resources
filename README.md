@@ -648,7 +648,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `constant` - naming convention ALL_CAPS; more `gas efficient`   
 
-`constructor` - called once when contract is deployed    
+`constructor` - called once when contract is deployed
+	- [intitialize function](https://stackoverflow.com/questions/72475214/solidity-why-use-initialize-function-instead-of-constructor) : The contract’s constructor is automatically called during contract deployment.But this is no longer possible when proxies are in play, as the constructor would change only the implementation contract’s storage (Contract B), not the storage of the proxy contract (Contract A), which is the one that matters. Therefore, an additional step is required. We need to change the constructor in a regular function. This function is conventionally called initialize or init, this function will be called on the proxy contract once both contracts have been published, so as to save all changes of state on the proxy contract (contract A) and not on the implementation (contract B)
 
 `creation code` - only executed by the EVM once during the transaction that creates the contract.  gets executed in a transaction, which returns a copy of the runtime code, which is the actual code of the contract. The contract’s constructor is part of the creation code; it will not be present in the contract’s code once it is deployed.   
 
@@ -661,9 +662,12 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 `data Locations` - Storage, Memory and Calldata
   1. storage - variable is a state variable (store on blockchain)
   2. memory - variable is in memory and it exists while a function is being called
-  3. calldata - special data location that contains function arguments: [decoding calldata](https://youtu.be/sas02qSFZ74?t=38028)
+  3. calldata - originates as part of the transaction payload sent to the blockchain. When a transaction is broadcasted, the calldata is included in the transaction and passed to the EVM upon execution. It is stored in the RLP-encoded transaction on-chain, accessible only during execution. resides in a virtualized region of the EVM's memory that behaves similarly to other stack-based memory structures. It exists only during the execution of the transaction and is discarded immediately after the transaction ends. (Special data location that contains function arguments): [decoding calldata](https://youtu.be/sas02qSFZ74?t=38028)
   	- Cost for setting a storage slot from zero to non-zero (higher gas cost).  
-     	- Cost for modifying a storage slot that is already non-zero (medium gas cost).     
+     	- Cost for modifying a storage slot that is already non-zero (medium gas cost).
+     	- CALLDATALOAD: Loads 32 bytes of calldata starting at a specific offset.
+     	- CALLDATACOPY: Copies a segment of calldata to memory.
+     	- CALLDATASIZE: Returns the total size of the calldata.
 
 `delegatcall` - identical to a message call apart from the fact that the code at the target address is executed in the context; a contract can dynamically load code from a different address at runtime. Storage, current address and balance still refer to the calling contract, only the code is taken from the called address. Pattick Collins explanation [1:05:07:37](https://youtu.be/gyMwXuJrbJQ?list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&t=104857); [shorter video](https://www.youtube.com/watch?v=uawCDnxFJ-0)      
 
