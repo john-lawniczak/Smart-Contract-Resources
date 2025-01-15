@@ -191,6 +191,7 @@ Set optimizer as high as possible until improvement stops; [Uniswap optimizer](h
 [Top 10 Vulnerabilities In Web3](https://medium.com/immunefi/the-top-10-most-common-vulnerabilities-in-web3-bf7a921d489f)   
 [Attacks via Consensys Best Practices](https://consensys.github.io/smart-contract-best-practices/attacks/)   
 
+- [Seal-911](https://github.com/security-alliance/seal-911)
 
 - Access Control
   
@@ -348,11 +349,13 @@ Echidna uses more advanced techniques like generating random transactions with r
 -----   
 
 ### Bug Bounty
- - [Code4rena](https://code4rena.com/) - [submission policy](https://docs.code4rena.com/roles/wardens/submission-policy)   
+ - [Code4rena](https://code4rena.com/) - [submission policy](https://docs.code4rena.com/roles/wardens/submission-policy)
+ - [Cantina](https://cantina.xyz/competitions)
  - [Code Hawks](https://www.codehawks.com/)
  - [Hats Finance](https://hats.finance/)   
  - [Immunefi](https://immunefi.com/)
- - [Sherlock](https://www.sherlock.xyz/) - [judging](https://docs.sherlock.xyz/audits/judging/guide-to-judging-contests) and [payout criteria](https://docs.sherlock.xyz/audits/watsons/meeting-the-payout-criteria)    
+ - [Remedy](https://hunt.r.xyz/programs)
+ - [Sherlock](https://www.sherlock.xyz/) - [judging](https://docs.sherlock.xyz/audits/judging/guide-to-judging-contests) and [payout criteria](https://docs.sherlock.xyz/audits/watsons/meeting-the-payout-criteria)
 
 -----   
 
