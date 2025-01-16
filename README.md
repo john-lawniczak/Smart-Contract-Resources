@@ -713,7 +713,7 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 `function selector` - first 4 bytes of the function signature: ex: 0xa9059cbb; excellent Patrick Collins section [22:46:43](https://youtu.be/gyMwXuJrbJQ?list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&t=82003); [shorter video](https://www.youtube.com/watch?v=Mn4e4w8h6n8); there can be function selector clashes   
 `function signature` - string that defines function name & parameters: ex: “transfer(address, uint256)”   
 
-[function modifiers](https://docs.soliditylang.org/en/develop/contracts.html#function-modifiers) 
+[visibility specifiers](https://docs.soliditylang.org/en/latest/cheatsheet.html#:~:text=Type%20Information.-,Function%20Visibility%20Specifiers,%EF%83%81,-open%20in%20Remix) 
  - `public` makes the function callable from any contract. If no visibility is specified for a function, it defaults to public.
  - `external` makes the function callable only from other contracts. These functions are often used for interactions between contracts. Note that they cannot be called internally, i.e., from within the same contract.
  - `private` makes the function callable only from within the contract where it is defined.
