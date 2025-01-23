@@ -310,7 +310,9 @@ Typical Risk classification:
    - Handler based testing [3:27:25](https://youtu.be/wUjYK5gwNZs?t=12443)  - depth = number of calls in a run
    - [Makefile](https://github.com/the-vegetarian-vampire/Solidity-Smart-Contract-Resources/blob/main/Smart%20Contracts/Makefile)
    - [Hoax](https://youtu.be/sas02qSFZ74?t=5248)   
-   - [txGasPrice](https://youtu.be/sas02qSFZ74?t=5753)
+   - [txGasPrice](https://youtu.be/sas02qSFZ74?t=5753)    
+
+`corpus` refers to a collection of input data samples or test cases used to evaluate and test the behavior of a program
 
 Types of fuzzing:       
 - Cross-Function Fuzzing        
@@ -509,7 +511,7 @@ Nomi Prins - [Collusion: How Central Bankers Rigged the World](https://www.amazo
 ## 🔖 Tools 
   - [Alchemy](https://www.alchemy.com/)
   - [Echidna](https://github.com/crytic/echidna)
-       - [Article](https://bushido-sec.com/index.php/2023/07/27/fuzzing-smart-contracts/)   
+       - [Article](https://bushido-sec.com/index.php/2023/07/27/fuzzing-smart-contracts/)
   - [Ethers](https://docs.ethers.org/v5/single-page/)   
   - [Etherscan](https://etherscan.io/)
   - [Foundry](https://book.getfoundry.sh/)
