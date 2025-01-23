@@ -439,7 +439,12 @@ Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)
 - All protocols leave some room for governance to decide the value of per collateral risk parameter in response to changes in market conditions, as some assets are more volatile than others.
 - All protocols denominate their collateral and debt prices using an oracle, in a widely accepted currency (e.g., ETH, USD, DAI).
 
-`bonding curve` - a mathematical curve that defines the relationship between the price and the supply of tokens. Often used in automated market makers.   
+`bonding curve` is a mathematical curve that defines the relationship between the price and the supply of tokens. It is often used in automated market makers (AMMs).
+- **Reserve Pool**: Stores the ETH or base asset backing the token.
+- **Bonding Curve Formula**: Determines the token price based on supply.
+- **Mint and Burn Logic**:
+  - **Mint**: Tokens are minted when users buy them, increasing the total supply.
+  - **Burn**: Tokens are burned when users sell them, reducing the total supply.
 
 [Constant product automated makes maker](https://www.youtube.com/watch?v=QNPyFs8Wybk) (CPMMs) are based on the function `x*y=k` which establishes a range of prices for two tokens according to the available quantities (liquidity) of each token. When the supply of token X increases, the token supply of Y must decrease, and vice-versa, to maintain the constant product K.
 
