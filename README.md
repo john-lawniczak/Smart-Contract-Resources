@@ -312,6 +312,13 @@ Typical Risk classification:
    - [Hoax](https://youtu.be/sas02qSFZ74?t=5248)   
    - [txGasPrice](https://youtu.be/sas02qSFZ74?t=5753)
 
+Types of fuzzing:
+    - Cross-Function Fuzzing
+    - Price Feed Manipulation via Fuzzing
+    - Storage Slot Packing Fuzzing
+    - Decimal Overflow Fuzzing
+    - Boundary Condition
+
 In 𝗳𝗼𝘂𝗻𝗱𝗿𝘆.𝘁𝗼𝗺𝗹 and add: `𝙫𝙞𝙖_𝙞𝙧 = 𝙛𝙖𝙡𝙨𝙚` to opt-out of [Solidity's IR compilation](https://docs.soliditylang.org/en/latest/ir-breaking-changes.html).   
 `Cloc` - will count lines of code: once installed: `cloc .`
 
@@ -511,7 +518,7 @@ Nomi Prins - [Collusion: How Central Bankers Rigged the World](https://www.amazo
       - [Forking mainnet](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks)
       - Import “hardhat/console.sol”; allows for console.log in Solidity contracts
   - [Inline bookmarks](https://marketplace.visualstudio.com/items?itemName=tintinweb.vscode-inline-bookmarks) // @audit this code seems vulnerable here
-  - [Medusa](https://github.com/crytic/medusa) - still in Beta      
+  - [Medusa](https://github.com/crytic/medusa)     
   - [Mythril](https://github.com/ConsenSys/mythril)
        - uses symbolic execution, SMT solving and taint analysis to detect a variety of security vulnerabilities
        - [MythX](https://github.com/muellerberndt/awesome-mythx-smart-contract-security-tools)
