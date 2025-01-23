@@ -312,12 +312,12 @@ Typical Risk classification:
    - [Hoax](https://youtu.be/sas02qSFZ74?t=5248)   
    - [txGasPrice](https://youtu.be/sas02qSFZ74?t=5753)
 
-Types of fuzzing:
-    - Cross-Function Fuzzing
-    - Price Feed Manipulation via Fuzzing
-    - Storage Slot Packing Fuzzing
-    - Decimal Overflow Fuzzing
-    - Boundary Condition
+Types of fuzzing:       
+- Cross-Function Fuzzing        
+- Price Feed Manipulation via Fuzzing    
+- Storage Slot Packing Fuzzing    
+- Decimal Overflow Fuzzing    
+- Boundary Condition    
 
 In 𝗳𝗼𝘂𝗻𝗱𝗿𝘆.𝘁𝗼𝗺𝗹 and add: `𝙫𝙞𝙖_𝙞𝙧 = 𝙛𝙖𝙡𝙨𝙚` to opt-out of [Solidity's IR compilation](https://docs.soliditylang.org/en/latest/ir-breaking-changes.html).   
 `Cloc` - will count lines of code: once installed: `cloc .`
