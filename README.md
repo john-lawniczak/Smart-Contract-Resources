@@ -179,7 +179,22 @@ Set optimizer as high as possible until improvement stops; [Uniswap optimizer](h
 - [Yul](https://docs.soliditylang.org/en/latest/yul.html) and [Huff](https://docs.huff.sh/) (lower level bytecode languages) [Huff starter Kit](https://github.com/smartcontractkit/huff-starter-kit) and [Huff basics](https://www.youtube.com/watch?v=UWY27vL1cw4)   
 - Solidity vs Vyper [gas comparison](https://github.com/PatrickAlphaC/sc-language-comparison)
 - [Salted contract creations / create2](https://docs.soliditylang.org/en/latest/control-structures.html#salted-contract-creations-create2)
-- The EVM has a hard limit on the stack depth of 1024. This means that at any point in the execution of a transaction, there cannot be more than 1024 elements on the stack. If an operation tries to exceed this limit, it will fail; This will consume all the gas provided to the transaction.   
+- The EVM has a hard limit on the stack depth of 1024. This means that at any point in the execution of a transaction, there cannot be more than 1024 elements on the stack. If an operation tries to exceed this limit, it will fail; This will consume all the gas provided to the transaction.
+
+-----
+
+## Transactions and Signatures: 
+
+### V, R, S in Transactions
+
+In Ethereum, the `V`, `R`, and `S` are components of the ECDSA (Elliptic Curve Digital Signature Algorithm) signature used to verify transaction authenticity:
+
+- **R (32 bytes)**: The x-coordinate of the random point selected during the signing process.
+- **S (32 bytes)**: A deterministic value ensuring signature uniqueness and validity.
+- **V (1 byte)**: The recovery ID, used to identify the correct public key for signature verification. It also includes the chain ID to protect against replay attacks (EIP-155).
+
+These components allow the network to verify the transaction was signed by the sender's private key and recover the sender's Ethereum address for validation.
+
   
 -----
 
