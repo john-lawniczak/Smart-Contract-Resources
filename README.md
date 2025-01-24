@@ -264,6 +264,8 @@ Reports
 2. Logical bugs, this is arguably the biggest surface for attacks as it can be very project-specific
 3. Ecosystem oriented bugs, includes projects explicit and implicit interaction with whole blockchain: frontrunning/sandwiching, oracle manipulations, incorrect integrations, flashloan attacks, all go here
 
+- `timeboxing` - allocate a fixed, maximum amount of time and step out of the rabbit hole; move on. 
+
 Build a racing bot via [4naly3er](https://github.com/Picodes/4naly3er) - open source static analyzer to build on top of   
 
 Most auditor discussions are on Twitter.   
@@ -563,6 +565,12 @@ Nomi Prins - [Collusion: How Central Bankers Rigged the World](https://www.amazo
 
 [Metadock](https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo/related) - extends Etherscan; "Proxy Upgrade Log"   
 [Visualizer tool](https://github.com/naddison36/sol2uml)   
+
+--- 
+
+### Contract Deployment
+- `forge build --vv` - verbose compiling
+- `forge build --via-ir --vv` - Intermediate Representation (IR)-based compilation; can enable in the TOML file: [profile.default] via_ir = true
     
 -----
 ### Wallets
