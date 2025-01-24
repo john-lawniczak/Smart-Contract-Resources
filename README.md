@@ -195,7 +195,6 @@ In Ethereum, the `V`, `R`, and `S` are components of the ECDSA (Elliptic Curve D
 
 These components allow the network to verify the transaction was signed by the sender's private key and recover the sender's Ethereum address for validation.
 
-  
 -----
 
 ## Hacks and [Security](https://docs.soliditylang.org/en/latest/security-considerations.html#pitfalls)
@@ -384,6 +383,12 @@ Echidna uses more advanced techniques like generating random transactions with r
  - [Sherlock](https://www.sherlock.xyz/) - [judging](https://docs.sherlock.xyz/audits/judging/guide-to-judging-contests) and [payout criteria](https://docs.sherlock.xyz/audits/watsons/meeting-the-payout-criteria)
 
 -----   
+
+## AI
+
+- [Scrappy Web3 Bots](https://github.com/muellerberndt/legion) by muellerberndt
+
+----
 
 ## Defi
 🔖 [Layer2 Beat](https://l2beat.com/scaling/tvl)   
