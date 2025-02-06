@@ -862,7 +862,22 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
    - proxy contract --> points to correct implementation
    - the user makes calls to proxy
    - the admin decides which contract to upgrade etc
-   - small proxies, usually referred to as `clones` can be used to deploy code only once and re-use it over and over again.   
+   - small proxies, usually referred to as `clones` can be used to deploy code only once and re-use it over and over again.
+
+`pull based patterns` - refer to design approaches where actions, funds, or data are retrieved on-demand ("pulled") by users or external actors rather than being automatically "pushed" by the contract. Instead of automatically sending funds, the contract credits a user’s balance and lets them withdraw funds via a dedicated function.
+  - **Reentrancy Mitigation:** Isolates external calls from critical state updates.
+  - **Gas Efficiency:** Avoids running into gas limit issues during automatic transfers.
+  - **Fault Tolerance:** Prevents failed transfers from affecting overall contract operation.
+- **Example:** OpenZeppelin’s `PullPayment` contract.
+
+Data/Action Pattern    
+- **Definition:** Instead of pushing state updates or data, the contract stores the necessary information for external actors to query (or "pull") on demand.
+- **Benefits:**
+  - **Efficiency:** Heavy computations or data retrieval occurs only when needed.
+  - **Security:** Reduces the attack surface by decoupling state changes from external calls.
+  - **Modularity:** Enhances maintainability and clarity by separating state updates from data retrieval.
+
+These pull-based patterns are widely adopted in decentralized finance (DeFi) protocols to enhance security, efficiency, and robustness.   
 
 `pure` - static, does not effect or modify state, more computational [free function]   
 
