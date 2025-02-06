@@ -457,7 +457,33 @@ Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)
 
 `kink parameter` - the point in the interest rate model of Compound Finance where the interest rate stops increasing linearly and starts increasing polynomially.   
 
-`Collateralized Debt Position` CDP - the unit of accounting used to track a specific borrowed debt amount, the respective collateral that backs it, as well as the ratio between the value of these two assets, known as the `Individual Collateral Ratio` (ICR).   
+`Collateralized Debt Position` CDP - the unit of accounting used to track a specific borrowed debt amount, the respective collateral that backs it, as well as the ratio between the value of these two assets, known as the `Individual Collateral Ratio` (ICR).  
+
+----
+
+### Differences Between Uniswap Versions 1-4
+
+- **Uniswap V1:**
+  - Only ETH/token pairs.
+  - Simple constant product (x * y = k) AMM.
+  - Minimal design and functionality.
+
+- **Uniswap V2:**
+  - Supports ERC20/ERC20 pairs.
+  - Introduced flash swaps.
+  - Added built-in price oracles and improved LP token functionality.
+
+- **Uniswap V3:**
+  - Concentrated liquidity, allowing LPs to specify custom price ranges.
+  - Multiple fee tiers for improved capital efficiency.
+  - Enhanced customization and capital utilization for liquidity providers.
+
+- **Uniswap V4 (Upcoming/Conceptual):**
+  - Modular and composable architecture with plug-and-play hooks.
+  - Further improvements in gas efficiency and capital optimization.
+  - More flexible fee structures and integration enhancements.
+
+----
 
 [Slippage Attacks](https://dacian.me/defi-slippage-attacks)    
 [Build a liquidation bot](https://docs.aave.com/faq/liquidations) (docs)/[video](https://youtu.be/gyMwXuJrbJQ?list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&t=72020)    
@@ -655,6 +681,25 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 `Alpha` - in finance it refers to excess return of an investment relative to the return of a benchmark index   
 
 [AMM](https://www.youtube.com/watch?v=1PbZMudPP5E) - Automated Market Maker; underlying protocol that powers all decentralized exchanges (DEXs), DEXs help users exchange cryptocurrencies by connecting users directly, without an intermediary; autonomous trading mechanisms that eliminate the need for centralized exchanges; drawback: susceptible to front running because of publicity in mempool    
+
+`Anti-Patterns` - common coding practices or design patterns in smart contract development that lead to insecure, inefficient, or unmaintainable code.
+**Common Examples:**
+- **Reentrancy Vulnerability:**  
+  Failing to follow the Checks-Effects-Interactions pattern, enabling malicious reentrant calls.
+- **Using `tx.origin` for Authentication:**  
+  Relying on `tx.origin` instead of `msg.sender` to validate callers, which can be exploited by phishing attacks.
+- **Unbounded Loops:**  
+  Implementing loops without proper limits, risking excessive gas consumption and transaction failure.
+- **Direct Ether Transfers Without Checks:**  
+  Using methods like `transfer` or `call` without proper error handling, which may lead to lost funds.
+- **Lack of Input Validation:**  
+  Not validating inputs or state, leading to unexpected behavior or vulnerabilities.
+- **Hardcoding Critical Values:**  
+  Embedding constants in code that should be configurable, reducing flexibility and increasing risk.
+- **Overly Complex Inheritance:**  
+  Using deep or circular inheritance structures that complicate auditing and increase error risk.
+- **Improper Use of Libraries:**  
+  Not leveraging safe math libraries (or relying on outdated versions), leading to potential overflows/underflows.
 
 `Application-specific integrated circuit` or [ASIC](https://www.businessinsider.com/personal-finance/asic-mining?op=1) - The most powerful computer has the greatest chance of solving the puzzle, and so ASIC mining was created to maximize the possibility of mining; see also [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit)    
 
