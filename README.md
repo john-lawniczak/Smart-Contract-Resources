@@ -667,7 +667,11 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 -----  
 
 ## Dictionary of Key Terms (Solidity) 
-###### Broader [Crypto dictionary](https://coinmarketcap.com/alexandria/glossary) of terms or [General](https://medium.datadriveninvestor.com/crypto-vocabulary-expanded-76131d26537b)
+###### Broader [Crypto dictionary](https://coinmarketcap.com/alexandria/glossary) of terms or [General](https://medium.datadriveninvestor.com/crypto-vocabulary-expanded-76131d26537b)    
+
+`63/64 rule of EIP-150` - to prevent denial-of-service attacks involving deep call stacks in Ethereum:
+    * ensures when calling another contract using CALL, DELEGATECALL, or similar opcodes, the calling contract can only pass at most 63/64ths (about 98.4%) of its remaining gas to the called contract.
+    * This guarantees the calling contract always retains a small portion (at least 1/64th) of its gas, allowing for safe termination and error handling, mitigating out-of-gas attacks.    
 
  `Aave` - decentralised non-custodial liquidity market protocol where users can participate as suppliers or borrowers. Suppliers provide liquidity to the market to earn a passive income, while borrowers are able to borrow in an overcollateralised (perpetually) or undercollateralised (one-block liquidity) fashion; Stani Kulechov [interview](https://www.youtube.com/watch?v=PA9QrrH-ze0) by Haseeb Qureshi -- [Aave website](https://app.aave.com/)    
 
@@ -721,6 +725,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `bridges` - a blockchain [bridge](https://blog.makerdao.com/what-are-blockchain-bridges-and-why-are-they-important-for-defi/): and [Youtube](https://www.youtube.com/watch?v=xS0PyYpt6bA) connects two blockchain ecosystems. Bridges facilitate communication between blockchains through the transfer of information and assets.   
 
+`bridge loan` - short-term loan allowing users to temporarily borrow funds (often stablecoins or major crypto assets) while awaiting other liquidity sources, such as the settlement of cross-chain asset transfers, DeFi protocol withdrawals, or yield farming returns.
+
 `Byzantine fault` or [Byzantine generals problem](https://en.wikipedia.org/wiki/Byzantine_fault) - a condition of a computer system, particularly distributed computing systems, where components may fail and there is imperfect information on whether a component has failed; thus the reason for Proof of Work  
 
 `CFMM` - Constant Function Market Makers: [article](https://medium.com/bollinger-investment-group/constant-function-market-makers-defis-zero-to-one-innovation-968f77022159)   
@@ -763,7 +769,12 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `describe ()` - function in [Jasmine](https://stackoverflow.com/questions/12209582/the-describe-keyword-in-javascript) framework used for testing   
 
-`deterministic algorithm` - an [algorithm](https://en.wikipedia.org/wiki/Deterministic_algorithm) that, given a particular input, will always produce the same output, with the underlying machine always passing through the same sequence of states    
+`deterministic algorithm` - an [algorithm](https://en.wikipedia.org/wiki/Deterministic_algorithm) that, given a particular input, will always produce the same output, with the underlying machine always passing through the same sequence of states  
+
+`Discrete Log Contracts (DLCs)` - blockchain-based protocols used to create secure and private smart contracts that rely on real-world events or off-chain data, without needing to trust a single oracle. They were initially proposed by Thaddeus Dryja, co-author of the Lightning Network paper.    
+ - Transaction details remain private, as only contract participants and oracles know the details.
+ - Oracles can't manipulate or even know how their data is used. Parties don't need to trust an oracle fully—just their honesty in publishing data.
+ - DLCs scale well since most interactions occur off-chain. Blockchain is primarily used for settlement.
  
 `dutch auction` - a descending price auction; an auctioneer starts with a very high price, incrementally lowering the price until someone places a bid   
 
@@ -862,6 +873,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `memepool` - or [memory pool](https://www.alchemy.com/overviews/what-is-a-mempool) is a dynamic staging area in front of the blockchain that enables transaction ordering, fee prioritization, and general block construction; a list of pending transactions waiting for validation from a node before it is committed to a block on the blockchain   
 
+`meta-transactions` - a transaction without the end-user directly paying for gas: users sign transactions off-chain, and a third-party service called a relayer submits the transaction to the blockchain, paying gas on the user's behalf    
+
 `MEV` - maximal (formerly miner) extractable value; referred to as an “invisible tax” that miners can collect from users – essentially, the maximum value a miner can extract from moving around transactions when producing a block on a blockchain network; [video](https://youtu.be/u4sV-Btg1Ag)   
 
 `mocking`- creating objects that simulate the behaviour of real objects; primarily used in unit testing; [Patrick Collins mocks](https://youtu.be/sas02qSFZ74?t=2553)    
@@ -871,7 +884,9 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
   2. Validate inputs
   3. Guard against reentrancy hack   
   
-`msg.sender` - there will always be a msg.sender; one who call contract   
+`msg.sender` - there will always be a msg.sender; one who call contract  
+
+`musked` - refers to the transaction payload being obfuscated or spoofed (always verify transactions at the smart contract data level, not just UI)
 
 [Named imports](https://youtu.be/umepbfKp5rI?t=13460)    
 
