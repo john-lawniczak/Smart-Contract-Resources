@@ -682,8 +682,6 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `Air state` - algebraic intermediate representation: In zero-knowledge proofs (ZKPs), particularly in STARKs (Scalable Transparent Argument of Knowledge), AIR is a mathematical framework used to describe computations in a way that can be efficiently verified; It defines a set of constraints that an execution trace must satisfy.    
 
-Shadow accounting 
-
 [airdrop](https://www.coindesk.com/learn/what-is-a-crypto-airdrop/) - involve blockchain-based projects and developers sending out free tokens to members of their communities as part of a broader marketing initiative.    
 
 `Alpha` - in finance it refers to excess return of an investment relative to the return of a benchmark index   
