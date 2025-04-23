@@ -326,7 +326,9 @@ Typical Risk classification:
    - Handler based testing [3:27:25](https://youtu.be/wUjYK5gwNZs?t=12443)  - depth = number of calls in a run
    - [Makefile](https://github.com/the-vegetarian-vampire/Solidity-Smart-Contract-Resources/blob/main/Smart%20Contracts/Makefile)
    - [Hoax](https://youtu.be/sas02qSFZ74?t=5248)   
-   - [txGasPrice](https://youtu.be/sas02qSFZ74?t=5753)    
+   - [txGasPrice](https://youtu.be/sas02qSFZ74?t=5753)
+   - [Fuzzing Uniswap V4](https://www.youtube.com/live/CwvD8dmTsRc)
+	- Assets vs liabilities, end to end (invariant) at any point A ≥ L (e.g. total value held by the protocol must cover user obligations).
 
 `corpus` refers to a collection of input data samples or test cases used to evaluate and test the behavior of a program
 
@@ -461,7 +463,7 @@ Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)
 
 ----
 
-### Differences Between Uniswap Versions 1-4
+### Uniswap Versions 1-4
 
 - **Uniswap V1:**
   - Only ETH/token pairs.
@@ -482,6 +484,18 @@ Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)
   - Modular and composable architecture with plug-and-play hooks.
   - Further improvements in gas efficiency and capital optimization.
   - More flexible fee structures and integration enhancements.
+ 
+- [Fuzzing Uniswap V4](https://www.youtube.com/live/CwvD8dmTsRc)
+	- Assets vs liabilities, end to end (invariant) at any point A ≥ L (e.g. total value held by the protocol must cover user obligations).
+   	- After random sequences of deposits/trades/withdrawals, assert your harness checks assets >= liabilities
+- Protocol Phases
+	- Genesis: deployment & initial parameters.
+	- Operation: normal user flows (deposits, swaps, liquidations).
+	- Wind-down: emergency exits, pauses, graceful shutdown.
+	- Fuzzing use: target each phase with tailored inputs (e.g. bad init data, stress during run, forced exit).
+- Shortcut Functions: helper calls that leapfrog the protocol into complex or edge states to seed fuzzing contexts and accelerate coverage.
+- Canary Flaws: small, deliberately injected assertions that should never fire, used to alert you when a fuzzer has reached a dangerous or unexpected path.
+
 
 ----
 
@@ -795,7 +809,11 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `EVM` - Ethereum is a stack based architecture, single threaded.   
 
-`fallback` - special function executed either when a function that does not exist is called or Ether is sent directly to a contract but receive() does not exist or msg.data is not empty; fallback has a 2300 gas limit when called by transfer or send   
+`factory contract` - a smart contract that deploys and manages other contracts. It acts as a blueprint for creating multiple instances of a contract dynamically on-chain.
+
+`fallback` - special function executed either when a function that does not exist is called or Ether is sent directly to a contract but receive() does not exist or msg.data is not empty; fallback has a 2300 gas limit when called by transfer or send    
+
+`flattened contract` - taking a contract that uses import statements and merging it with all of its dependencies into a single .sol file, with no imports remaining; use the solidity-flattener or [forge-flatten](https://book.getfoundry.sh/reference/forge/forge-flatten#forge-flatten): Example: `forge flatten src/MyContract.sol --output out/Flat.sol`
 
 `flashbots` - [independent project](https://ethereum.org/en/developers/docs/mev/) which extends execution clients with a service allowing searchers to submit MEV transactions to validators without revealing them to the public mempool; prevents transactions from being frontrun by generalized frontrunners; [video](https://www.youtube.com/watch?v=Zt15wrSDVxc)  
    - How to build [flashbots](https://www.youtube.com/watch?v=gme0uNyIIsE)
@@ -952,6 +970,8 @@ These pull-based patterns are widely adopted in decentralized finance (DeFi) pro
 `remote procedure call` or [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) - when a computer program causes a procedure (subroutine) to execute in a different address space (commonly on another computer on a shared network), which is written as if it were a normal (local) procedure call, without the programmer explicitly writing the details for the remote interaction   
 
 [ring signature](https://www.youtube.com/watch?v=zHN_B_H_fCs) -  type of digital signature that can be performed by any member of a set of users that each have keys. Therefore, a message signed with a ring signature is endorsed by someone in a particular set of people   
+
+`RLP Encoding` - Recursive Length Prefix (RLP) is Ethereum’s core binary serialization format; lets Ethereum pack complex, nested data structures into a compact, predictable byte stream
 
 `safeMath` - before 0.8.0. there were overflow and underflow issues; prior to that version, solidity's "+" operator wouldn't check for overflows, leading to type(uint256).max + 1 = 0, and the safeMath library would avoid it. Now, type(uint256).max + 1 reverts with Panic(0x11), and safeMath isnt needed.   
 
