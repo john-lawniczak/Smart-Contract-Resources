@@ -480,10 +480,19 @@ Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)
   - Multiple fee tiers for improved capital efficiency.
   - Enhanced customization and capital utilization for liquidity providers.
 
-- **Uniswap V4 (Upcoming/Conceptual):**
-  - Modular and composable architecture with plug-and-play hooks.
-  - Further improvements in gas efficiency and capital optimization.
+- **Uniswap V4:**
+  - Modular and composable architecture with plug-and-play **hooks**.
+  - Further improvements in gas efficiency and capital optimization with ERC-6909
   - More flexible fee structures and integration enhancements.
+  - Hooks:  
+	- beforeInitialize, afterInitialize
+	- beforeAddLiquidity, afterAddLiquidity
+	- beforeRemoveLiquidity, afterRemoveLiquidity
+	- beforeSwap, afterSwap
+	- beforeDonate, afterDonate
+	- ERC-6909 (Singleton multi-token standard that stores all positions in a single contract to reduce deployment and transfer costs)
+	- Singleton
+	- Flash accounting (token debits/credits within a transaction are netted before settlement)
  
 - [Fuzzing Uniswap V4](https://www.youtube.com/live/CwvD8dmTsRc)
 	- Assets vs liabilities, end to end (invariant) at any point A ≥ L (e.g. total value held by the protocol must cover user obligations).
