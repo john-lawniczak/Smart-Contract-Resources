@@ -265,6 +265,16 @@ Reports
 
 - `timeboxing` - allocate a fixed, maximum amount of time and step out of the rabbit hole; move on. 
 
+Modern auditing checklist (concise):
+- Invariants and state assertions: identify core system invariants; add invariant tests/fuzzing.
+- Price/oracle safety: TWAP usage, observation cardinality sizing, staleness/heartbeat checks, manipulation resistance.
+- AMM specifics: concentrated liquidity range math, fee accounting, [`JIT`](#jit-just-in-time-liquidity) exposure, LVR evaluation; hook integration for v4.
+- Auth/roles: `onlyOwner`/roles scoping, upgrade paths, timelocks, pausability, guardian powers.
+- External calls: CEI pattern, reentrancy coverage (including hooks/callbacks), pull over push flows.
+- Token standards: ERC-20 quirks (fee-on-transfer, non-standard returns), ERC-721/1155 safety, [`ERC-4626`](#erc-4626-tokenized-vault-standard) rounding and preview/convert alignment.
+- Economic sims: liquidation thresholds, interest kink params, funding-rate logic for [`perpetual futures`](#perpetual-futures-perp), auction/solver incentives for [`intents`](#intents).
+- L2/L1 bridges: replay protection, message ordering, proof windows, sequencer liveness checks.
+
 Build a racing bot via [4naly3er](https://github.com/Picodes/4naly3er) - open source static analyzer to build on top of   
 
 Most auditor discussions are on Twitter.   
@@ -339,7 +349,7 @@ Types of fuzzing:
 - Decimal Overflow Fuzzing    
 - Boundary Condition    
 
-In 𝗳𝗼𝘂𝗻𝗱𝗿𝘆.𝘁𝗼𝗺𝗹 and add: `𝙫𝙞𝙖_𝙞𝙧 = 𝙛𝙖𝙡𝙨𝙚` to opt-out of [Solidity's IR compilation](https://docs.soliditylang.org/en/latest/ir-breaking-changes.html).   
+In foundry.toml you can toggle `via_ir`. Use `via_ir = true` for modern optimizations; if you hit IR-specific issues, temporarily disable it. See [Solidity IR notes](https://docs.soliditylang.org/en/latest/ir-breaking-changes.html).   
 `Cloc` - will count lines of code: once installed: `cloc .`
 
 [Exploiting Precision Loss via Fuzz Testing Article](https://dacian.me/exploiting-precision-loss-via-fuzz-testing)    
@@ -393,6 +403,7 @@ Echidna uses more advanced techniques like generating random transactions with r
 ----
 
 ## Defi
+Key concepts: [`AMM`](#amm) · [`TWAPs`](#twaps-or-time-weighted-average-prices) · [`JIT liquidity`](#jit-just-in-time-liquidity) · [`RFQ`](#rfq-request-for-quote) · [`DLOB`](#dlob-decentralized-limit-order-book) · [`perpetual futures`](#perpetual-futures-perp) · [`observation cardinality`](#observation-cardinality) · [`Slots and epochs`](#slots-and-epochs-ethereum-pos) · [`MEV`](#mev)
 🔖 [Layer2 Beat](https://l2beat.com/scaling/tvl)   
 🔖 [Defi Llama](https://defillama.com/)    
 
@@ -479,6 +490,7 @@ Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)
   - Concentrated liquidity, allowing LPs to specify custom price ranges.
   - Multiple fee tiers for improved capital efficiency.
   - Enhanced customization and capital utilization for liquidity providers.
+  - See also: [`JIT liquidity`](#jit-just-in-time-liquidity), [`observation cardinality`](#observation-cardinality), [`TWAPs`](#twaps-or-time-weighted-average-prices)
 
 - **Uniswap V4:**
   - Modular and composable architecture with plug-and-play **hooks**.
@@ -493,6 +505,7 @@ Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)
 	- ERC-6909 (Singleton multi-token standard that stores all positions in a single contract to reduce deployment and transfer costs)
 	- Singleton
 	- Flash accounting (token debits/credits within a transaction are netted before settlement)
+  - See also: [`JIT liquidity`](#jit-just-in-time-liquidity), [`RFQ`](#rfq-request-for-quote), [`DLOB`](#dlob-decentralized-limit-order-book)
  
 - [Fuzzing Uniswap V4](https://www.youtube.com/live/CwvD8dmTsRc)
 	- Assets vs liabilities, end to end (invariant) at any point A ≥ L (e.g. total value held by the protocol must cover user obligations).
@@ -624,7 +637,7 @@ Nomi Prins - [Collusion: How Central Bankers Rigged the World](https://www.amazo
 
 ### Contract Deployment
 - `forge build --vv` - verbose compiling
-- `forge build --via-ir --vv` - Intermediate Representation (IR)-based compilation; can enable in the TOML file: [profile.default] via_ir = true
+- `forge build --via-ir --vv` - IR-based compilation; or set `[profile.default] via_ir = true` in foundry.toml
     
 -----
 ### Wallets
@@ -709,6 +722,7 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `Alpha` - in finance it refers to excess return of an investment relative to the return of a benchmark index   
 
+<a id="amm"></a>
 [AMM](https://www.youtube.com/watch?v=1PbZMudPP5E) - Automated Market Maker; underlying protocol that powers all decentralized exchanges (DEXs), DEXs help users exchange cryptocurrencies by connecting users directly, without an intermediary; autonomous trading mechanisms that eliminate the need for centralized exchanges; drawback: susceptible to front running because of publicity in mempool    
 
 `Anti-Patterns` - common coding practices or design patterns in smart contract development that lead to insecure, inefficient, or unmaintainable code.
@@ -764,6 +778,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `coinbase transaction` - the first transaction in a block. Miners use it to collect the block reward, and any additional transaction fees.   
 
+`concentrated liquidity` - liquidity placed within a chosen price range (e.g., Uniswap v3). Improves capital efficiency but introduces range selection, rebalancing, and fee-capture timing risks (see [`JIT`](#jit-just-in-time-liquidity)).
+
 `commit-reveal scheme` - two-step process where users first commit to a choice without revealing it. Later, they reveal their choice. This prevents others from seeing the original choice until the reveal stage. Used for voting, random number generation, etc.   
 	- Rock-Paper-Scissors Game Design: Use a commit-reveal scheme. Players first commit (send hash of their choice + secret) and then reveal in the next step.   
 
@@ -812,6 +828,9 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 `ENS - Ethereum Name Service` -  distributed, open, and extensible naming system based on the Ethereum blockchain; [documents](https://docs.ens.domains/) and [video](https://www.youtube.com/watch?v=P8RlPsjGaR8)   
 
 `EIP` - (Ethereum Improvement Proposal) a formal proposal to alter some element of the Ethereum network   
+
+<a id="erc-4626-tokenized-vault-standard"></a>
+`ERC-4626 (Tokenized Vault Standard)` - standard interface for tokenized vaults. Auditing checks: preview/mint/redeem alignment, rounding direction (user-favorable), share:asset ratio monotonicity, fee accrual and share dilution correctness, totalAssets consistency, edge cases on zero/first depositor.
 
 `EOA` - Externally Owned Account; in general, there are two types of accounts: externally owned accounts, controlled by private keys, and contract accounts, controlled by their contract code   
 
@@ -868,6 +887,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 [heartbeat, oracle](https://docs.chain.link/data-feeds/price-feeds/addresses/?network=ethereum) click show more details - refers to an oracle providing regular updates at fixed intervals   
 
+`hooks (Uniswap v4)` - callback contracts invoked before/after core pool actions (initialize, add/remove liquidity, swap, donate). Risks: reentrancy, griefing via reverts, gas bombs, and price manipulation through callbacks. Require strict ordering, access control, limits, and integration tests.
+
 `Howey Test` - refers to the U.S. Supreme Court [case](https://www.investopedia.com/terms/h/howey-test.asp) for determining whether a transaction qualifies as an "investment contract," and therefore would be considered a security; (per Infinite Machine Chp. White-Shoe Lawyers) Ether presale was classified as a utility, a function of ethereum and therefore not a security; manner distribution of a product and not as a speculative investment; essentially a utility token   
 
 `immutable` - can be set inside the constructor but cannot be modified afterwards, more `gas efficient`: `i_owner` - i meaning immutable   
@@ -877,6 +898,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 `interface` - a list of function definitions without implementation. In other words, an interface is a description of all functions that an object must have for it to operate; convention preface `I` as in IERC721; [video](https://www.youtube.com/watch?v=tbjyc-VQaQo)   
 
 `internal` - can't be called directly from outside the contract; same as private, except it's accessible to contracts that inherit  
+
+`intents` - users express desired outcomes (e.g., "swap X for Y at best price") rather than specific transactions. Solvers/routers fulfill intents via auctions or matching (e.g., CoW Protocol). Security/MEV implications: solver incentives, fair routing, and replay/manipulation resistance of signed intents.
 
 `interoperability` - the ability of independent distributed ledger networks to communicate with each other, exchange and make use of data; ability to move a digital asset between two or more blockchains while maintaining the state and uniqueness of the asset consistent throughout the process    
 
@@ -901,6 +924,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 `linting` - the process of running a program that will analyze code for potential errors (verifying code quality) [eslint](https://eslint.org/)   
 
 [liquidity pool](https://www.youtube.com/watch?v=dVJzcFDo498) - a smart contract containing large portions of cryptocurrency, digital assets, tokens, or virtual coins locked up and ready to provide essential liquidity for networks that facilitate decentralized trading
+
+`LVR (Loss Versus Rebalancing)` - measure of LP underperformance vs a continuously rebalanced reference portfolio due to adverse selection and backrunning. Used to evaluate AMM design and fee tiers; impacted by oracle quality, latency, and liquidity-timing strategies like JIT.
 
 `magic number` [wiki](https://en.wikipedia.org/wiki/Magic_number_(programming)) unique value with unexplained meaning or multiple occurrences which could (preferably) be replaced with a named constant   
 
