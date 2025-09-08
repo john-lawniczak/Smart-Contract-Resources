@@ -796,6 +796,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `deterministic algorithm` - an [algorithm](https://en.wikipedia.org/wiki/Deterministic_algorithm) that, given a particular input, will always produce the same output, with the underlying machine always passing through the same sequence of states  
 
+`DLOB (Decentralized Limit Order Book)` - an order book where makers post price/size quotes and takers match against them. Storage/matching can be fully on-chain or hybrid (off-chain relayers with on-chain settlement). Enables price-time priority and advanced order types; examples include Serum/OpenBook-style systems.
+
 `Discrete Log Contracts (DLCs)` - blockchain-based protocols used to create secure and private smart contracts that rely on real-world events or off-chain data, without needing to trust a single oracle. They were initially proposed by Thaddeus Dryja, co-author of the Lightning Network paper.    
  - Transaction details remain private, as only contract participants and oracles know the details.
  - Oracles can't manipulate or even know how their data is used. Parties don't need to trust an oracle fully—just their honesty in publishing data.
@@ -888,6 +890,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `import path resolution` - name [import](https://docs.soliditylang.org/en/latest/path-resolution.html)
 
+`JIT (Just-In-Time liquidity)` - in concentrated-liquidity AMMs (e.g., Uniswap v3/v4), LPs add liquidity only for the block/ticks of a large swap to capture fees, then remove it immediately. A timing/game-theory tactic; Uniswap v4 hooks can penalize/reshape this behavior.
+
 `Keccak256` - [SHA-3](https://en.wikipedia.org/wiki/SHA-3)/Secure Hash Algorithm; using it in a [contract](https://www.youtube.com/watch?v=wCD3fOlsGc4)  
 
 `Know Your Customer` or KYC - guidelines and regulations in financial services that require professionals to verify the identity, suitability, and risks involved with maintaining a business relationship with a customer; providing documents AML (anti money laundering)    
@@ -928,6 +932,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
   
 `nonce` - transaction code for this account starting with 0; makes transactions unique; important regarding concurrency; If the account is an externally owned account, this number represents the number of transactions sent from the account’s address. If the account is a contract account, the nonce is the number of contracts created by the account; [short video](https://youtu.be/EOgpr73-pgc)    
 
+`observation cardinality` - the capacity (number of stored samples) in an AMM pool’s oracle ring buffer used for TWAPs (e.g., Uniswap). Higher cardinality ⇒ more samples/longer, smoother TWAPs with extra storage/gas; too low ⇒ easier to bias/short windows.
+
 `Omner blocks` - previously Uncle, it's possible for two blocks to be created simultaneously by a network. When this happens, one block will be left out. This leftover block is called an ommer block. In the past, they were called uncle blocks, referring to the familial relationships used to describe block positions within a blockchain  
 
 `Opcode` - operation code; the portion of a machine language instruction that specifies the operation to be performed; see gas [Opcode](https://github.com/crytic/evm-opcodes)   
@@ -937,6 +943,8 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 `ownable` - an [owner](https://docs.openzeppelin.com/contracts/4.x/api/access#Ownable) who has special privileges   
 
 `permission vs permissionless` - [comparison](https://permission.io/blog/permissioned-vs-permissionless-blockchain/) permissioned blockchains are distributed ledger technology (DLT) that sacrifice some degree of decentralization and anonymity to better suit business needs as well as achieve higher network speed and efficiency.   
+
+`perpetual futures (perp)` - a leveraged derivative with no expiry. Traders post margin and take long/short exposure; periodic funding payments between longs and shorts keep the mark price near an external index price (oracle). Positions are liquidated when margin cannot cover losses.
 
 `PII` - personal Identifying information.   
 
@@ -978,6 +986,8 @@ These pull-based patterns are widely adopted in decentralized finance (DeFi) pro
 
 `remote procedure call` or [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) - when a computer program causes a procedure (subroutine) to execute in a different address space (commonly on another computer on a shared network), which is written as if it were a normal (local) procedure call, without the programmer explicitly writing the details for the remote interaction   
 
+`RFQ (Request For Quote)` - instead of resting a limit order on-chain, an app/aggregator requests firm quotes off-chain from market makers, selects the best signed quote, and settles on-chain. Provides price certainty and low slippage for specified sizes.
+
 [ring signature](https://www.youtube.com/watch?v=zHN_B_H_fCs) -  type of digital signature that can be performed by any member of a set of users that each have keys. Therefore, a message signed with a ring signature is endorsed by someone in a particular set of people   
 
 `RLP Encoding` - Recursive Length Prefix (RLP) is Ethereum’s core binary serialization format; lets Ethereum pack complex, nested data structures into a compact, predictable byte stream
@@ -991,7 +1001,17 @@ These pull-based patterns are widely adopted in decentralized finance (DeFi) pro
 	 - `Espresso Sequencer` - a decentralized sequencing network for rollups. Its primary objective is to deliver secure, high throughput, and low latency transaction ordering and availability. 
  	-  Auditors should look out for missing L2 sequencer activity checks when they see price code callinglatestRoundData() in projects that are to be deployed on L2s.  
 
+`Sink` - a place where data flow ends in a sensitive effect: money moves or state mutates. Used in taint/flow analysis and DeFi to label state-write and value-movement sites as sensitive sinks.
+   - State sinks: setting `fee_vault`, writing a proof PDA, updating thresholds
+   - Origin: graph theory/flow networks “sink” (terminal node with incoming edges, no outgoing); adopted by AppSec and DeFi
+
 [slippage](https://www.youtube.com/watch?v=BgR75biSjzU) - the difference between the value of an asset at order placement and the value at order fulfilment. It can be found when buying or selling assets, and can result in either a loss or a gain (higher invariants lead to less slippage; Uniswap)      
+
+`Slots and epochs (Ethereum PoS)` - time is split into 12s slots and 32-slot epochs (~6.4 min). Each validator submits one attestation per epoch, voting on:
+   - the last justified checkpoint (source),
+   - the current epoch’s checkpoint (target), and
+   - the chain head (head, per LMD-GHOST fork choice).
+Aggregators BLS-aggregate attestations into blocks; timely, correct attestations comprise most validator rewards.
 
 `smart contract` - programs stored on a blockchain that run when predetermined conditions are met; a transaction protocol intended to automatically execute, control or document events and actions according to the terms of a contract or an agreement; Ethereum contracts are essentially single threaded machine       
 - `hybrid smart contracts` - combine code running on the blockchain (on-chain) with data and computation from outside the blockchain (off-chain) provided by decentralized oracle networks. [chainlink](https://chain.link/education-hub/hybrid-smart-contracts)   
@@ -1063,6 +1083,8 @@ These pull-based patterns are widely adopted in decentralized finance (DeFi) pro
    - `optimistic rollup` - assumes transactions are valid by default until proven otherwise. Incorrect transactions are challenged and rolled back.
    - zk-friendly vs. non-zk-friendly hash Functions: zk-friendly hash functions can be efficiently computed inside a zk-SNARK circuit, whereas non-zk-friendly ones can't.
    - Nullifier in Zero Knowledge: It's a unique value associated with a secret, used in zk-SNARKs protocols (like Zcash) to prevent double-spending without revealing the secret itself.
+
+
 
 ## Solidity Contract Layout
 
