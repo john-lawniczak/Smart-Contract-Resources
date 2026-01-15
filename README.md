@@ -1,27 +1,53 @@
-# Solidity | DeFi | and Blockchain Resources
+## Smart Contract Resources
 
-Resources for Solidity, Defi, and blockchain technologies.    
-🔖 = bookmark   
+A curated set of Solidity/EVM learning resources plus a growing collection of vulnerable contracts.
 
-🔖 [Remix](https://remix.ethereum.org) - for testing and deploying smart contracts   
-[Ethereum unit converter](https://eth-converter.com/)   
+### Contents
 
-🔖 Solidity [Documentation](https://docs.soliditylang.org/en/latest/index.html) and [Cheatsheet](https://docs.soliditylang.org/en/v0.8.13/cheatsheet.html?highlight=encodewithsignature)      
-🔖 Solidity [Best practices](https://consensys.github.io/smart-contract-best-practices/)    
-🔖 Solidity [By example](https://solidity-by-example.org/)   
+- [Core references](#core-references)
+- [Security and exploits](#security-and-exploits)
+- [Tooling](#tooling)
 
-[Ethereum Documentation](https://ethereum.org/en/developers/docs/)    
-[ERC20 Docs](https://docs.openzeppelin.com/contracts/4.x/) via [OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/) library   
+### Core references
 
-🔖 [Solidity Contract Layout](https://github.com/Cyfrin/foundry-full-course-f23#solidity-contract-layout)      
-🔖 [Awesome Foundry](https://github.com/crisgarner/awesome-foundry#awesome-foundry)    
-🔖 [RareSkills Git](https://github.com/RareSkills)   
+- [Mastering Ethereum (2nd Edition)](https://masteringethereum.xyz/) - primary long-form reference ([GitHub repo](https://github.com/ethereumbook/ethereumbook))
+- Solidity [documentation](https://docs.soliditylang.org/en/latest/) and [cheatsheet](https://docs.soliditylang.org/en/latest/cheatsheet.html)
+- [Ethereum developer docs](https://ethereum.org/en/developers/docs/)
+- [OpenZeppelin Contracts docs](https://docs.openzeppelin.com/contracts/)
+- [ConsenSys smart contract best practices](https://consensys.github.io/smart-contract-best-practices/)
+- [Solidity by Example](https://solidity-by-example.org/)
+- [Ethereum unit converter](https://eth-converter.com/)
+
+### Security and exploits
+
+- [Solidity security considerations](https://docs.soliditylang.org/en/latest/security-considerations.html)
+- [Vulnerability catalog](https://github.com/kadenzipfel/smart-contract-vulnerabilities)
+
+- **Real-world incidents**
+  - [DeFiLlama hacks database](https://defillama.com/hacks)
+  - [Rekt](https://rekt.news/) (incident writeups)
+  - [Web3 is going great](https://web3isgoinggreat.com/) (industry failures and incentives)
+- **MEV**
+  - [Ethereum MEV docs](https://ethereum.org/en/developers/docs/mev/)
+  - [Flashbots docs](https://docs.flashbots.net/)
+
+### Tooling
+
+- [Remix](https://remix.ethereum.org/) (quick prototyping)
+- [Foundry book](https://book.getfoundry.sh/) - also see [Awesome Foundry](https://github.com/crisgarner/awesome-foundry#awesome-foundry)
+- [Hardhat](https://hardhat.org/hardhat-runner/docs/getting-started#overview)
+- [Slither](https://github.com/crytic/slither)
+- [Echidna](https://github.com/crytic/echidna)
+- [EVM opcode reference](https://ethereum.org/en/developers/docs/evm/opcodes/)
+- [4byte signature DB](https://www.4byte.directory/)
+- [Solidity Contract Layout](https://github.com/Cyfrin/foundry-full-course-f23#solidity-contract-layout)
+- [RareSkills GitHub](https://github.com/RareSkills)
 
 ## Tutorial Resources
 
 `1. Patrick Collins Courses:` 
    -  Harhat Course - [Youtube](https://www.youtube.com/watch?v=gyMwXuJrbJQ&list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&t=12715s) and [Github](https://github.com/smartcontractkit/full-blockchain-solidity-course-js)   
-   -  🔖 Foundry Course - [Youtube](https://github.com/Cyfrin/foundry-full-course-f23) and [Github](https://github.com/Cyfrin/foundry-full-course-f23)
+   -  Foundry Course - [Youtube](https://github.com/Cyfrin/foundry-full-course-f23) and [Github](https://github.com/Cyfrin/foundry-full-course-f23)
    -  Smart Contract Audits, Security, and DeFi Course [Youtube](https://www.youtube.com/watch?v=pUWmJ86X_do&t=64331s) and [Github](https://github.com/Cyfrin/security-and-auditing-full-course-s23)   
   
 `2. Smart Contract Programmer:` 
@@ -32,8 +58,8 @@ Resources for Solidity, Defi, and blockchain technologies.
    - [Youtube](https://www.youtube.com/watch?v=DRZogmD647U)
    - [Gateway-Free-Web3-Security-Course](https://guardianaudits.notion.site/guardianaudits/Gateway-Free-Web3-Security-Course-574f4d819c144d7895cda6d61ba26503)
 
-🔖 [Secureum Mind Map](https://github.com/x676f64/secureum-mind_map)    
-🔖 [Teachyourselfcrypto.com](https://teachyourselfcrypto.com/) (great links to DeFi)   
+[Secureum Mind Map](https://github.com/x676f64/secureum-mind_map)    
+[Teachyourselfcrypto.com](https://teachyourselfcrypto.com/) (great links to DeFi)   
 
 -----
 
@@ -48,16 +74,11 @@ Resources for Solidity, Defi, and blockchain technologies.
 -----    
 
 ### News
-🔖 [Rekt ](https://rekt.news/)      
-[Web3isgoinggreat](https://web3isgoinggreat.com/)   
+[Blockthreat Intelligence](https://newsletter.blockthreat.io/)
 
 -----
 
 ### Youtube Resources
-
-🔖 Andy Li - [interviews](https://www.youtube.com/@andyli)      
-Johnny Time - [interviews](https://www.youtube.com/@JohnnyTime)  
-[OpenSense - Free Ethereum Security](https://www.youtube.com/@opensensepw)   
 
 [Blockchain and Money](https://www.youtube.com/playlist?list=PLUl4u3cNGP63UUkfL0onkxF6MYgVa04Fn) (MIT Fall 2018) ...taught by Gary Gensler...   
    - Conceptual idea of contracts with Harvard Prof. [Lawrence Lessig](https://youtu.be/JPkgJwJHYSc)  
@@ -91,11 +112,11 @@ Matt Levine: [Bloomberg](https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/m
 
 -----   
 ### Interactive (CTF, Capture the Flags)
-🔖 [Ethernaut Challenges](https://ethernaut.openzeppelin.com/) via OpenZeppelin   
+[Ethernaut Challenges](https://ethernaut.openzeppelin.com/) via OpenZeppelin   
    - [In Foundry](https://github.com/ciaranmcveigh5/ethernaut-x-foundry)
    - [D-Squared's Channel](https://www.youtube.com/@d-squared70/videos) and [DeFiDeveloperAcademy's Channel](https://www.youtube.com/@DeFiDeveloperAcademy)   
  
-🔖 [Damn Vulnerable DeFi](https://www.damnvulnerabledefi.xyz/)    
+[Damn Vulnerable DeFi](https://www.damnvulnerabledefi.xyz/)    
    - [In Foundry](https://github.com/nicolasgarcia214/damn-vulnerable-defi-foundry)   
 
 [Paradigm CTFs](https://ctf.paradigm.xyz/)    
@@ -114,11 +135,11 @@ Matt Levine: [Bloomberg](https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/m
 ----- 
 
 ## Opcodes | Gas Optimization | Storage and Memory
-🔖 [Layout in memory](https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html)   
-🔖 [Solidity Optimizer](https://docs.soliditylang.org/en/latest/internals/optimizer.html)   
-🔖 [Opcodes Updated](https://ethereum.org/en/developers/docs/evm/opcodes/) vs. - [Old Git](https://github.com/crytic/evm-opcodes) and [video](https://youtu.be/M8_4THWJkHQ?t=265)      
-🔖 [Ethereum Signature Database](https://www.4byte.directory/) or [Open Chain](https://openchain.xyz/signatures)   
-🔖 [EVM Storage](https://evm.storage/)   
+[Layout in memory](https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html)   
+[Solidity Optimizer](https://docs.soliditylang.org/en/latest/internals/optimizer.html)   
+[Opcodes Updated](https://ethereum.org/en/developers/docs/evm/opcodes/) vs. - [Old Git](https://github.com/crytic/evm-opcodes) and [video](https://youtu.be/M8_4THWJkHQ?t=265)      
+[Ethereum Signature Database](https://www.4byte.directory/) or [Open Chain](https://openchain.xyz/signatures)   
+[EVM Storage](https://evm.storage/)   
 
 [Solady](https://github.com/Vectorized/solady) and [Solmate](https://github.com/transmissions11/solmate)   
 
@@ -197,9 +218,7 @@ These components allow the network to verify the transaction was signed by the s
 
 -----
 
-## Hacks and [Security](https://docs.soliditylang.org/en/latest/security-considerations.html#pitfalls)
-🔖 [Vulnerabilities types](https://github.com/kadenzipfel/smart-contract-vulnerabilities)   
-[Defillama Hacks](https://defillama.com/hacks)   
+## Hacks and Security
 
 [2022 Auditor Rewind by Patrickd (Secureum)](https://ventral.digital/posts/2022/12/15/ethereum-smart-contract-auditors-2022-rewind)   
 [Top 10 Vulnerabilities In Web3](https://medium.com/immunefi/the-top-10-most-common-vulnerabilities-in-web3-bf7a921d489f)   
@@ -223,7 +242,7 @@ These components allow the network to verify the transaction was signed by the s
 - [Double spending](https://www.investopedia.com/terms/d/doublespending.asp) - 51% is one of the most commonly cited attacks   
 - Denial of service (DoS; DDoS attack)   
 - Oracle Manipulation - [Awesome-oracle-manipulation](https://github.com/0xcacti/awesome-oracle-manipulation) 
-  	- 🔖 [Chainlink Oracle Security Considerations](https://medium.com/cyfrin/chainlink-oracle-defi-attacks-93b6cb6541bf#87fc)   
+  	- [Chainlink Oracle Security Considerations](https://medium.com/cyfrin/chainlink-oracle-defi-attacks-93b6cb6541bf#87fc)   
 - [Replay attack](https://learn.bybit.com/blockchain/what-is-a-replay-attack/) - a replay of a transaction primarily taken place while a hard fork is being implemented; a delay or intercept data transmission that occurs over a network. This information can then be processed and repeated numerous times to effectively duplicate transactions   
   
 [Quick vulnerabilities walkthrough](https://youtu.be/JMf5P2DXfkM)    
@@ -243,14 +262,14 @@ These components allow the network to verify the transaction was signed by the s
 [What are the Actual Flaws in Important Smart Contracts](https://arxiv.org/abs/1911.07567v1)     
 [Cantina](https://cantina.xyz/welcome)   
 
-🔖 [Weird ERC20](https://github.com/d-xo/weird-erc20#revert-on-zero-value-transfers)  
-🔖 [The Solcurity Standard](https://github.com/transmissions11/solcurity) audit checklist    
+[Weird ERC20](https://github.com/d-xo/weird-erc20#revert-on-zero-value-transfers)  
+[The Solcurity Standard](https://github.com/transmissions11/solcurity) audit checklist    
 
-🔖 [Daily Warden](https://www.dailywarden.com/) - active and upcoming security contests   
+[Daily Warden](https://www.dailywarden.com/) - active and upcoming security contests   
 
 Reports 
-   - 🔖 [Solodit](https://solodit.xyz/)
-   - 🔖 [Code4rena](https://code4rena.com/reports)
+   - [Solodit](https://solodit.xyz/)
+   - [Code4rena](https://code4rena.com/reports)
      	- [Code4rena github issues](https://github.com/code-423n4)   
    - [Report Blog](https://www.dylandavis.net/2022/06/the-ideal-audit-report/) and [Bowtie's blog](https://bowtiedisland.com/how-to-read-a-smart-contract-audit-report/)
    - use ` ```diff` for report comparison when reporting a block of code
@@ -404,8 +423,8 @@ Echidna uses more advanced techniques like generating random transactions with r
 
 ## Defi
 Key concepts: [`AMM`](#amm) · [`TWAPs`](#twaps-or-time-weighted-average-prices) · [`JIT liquidity`](#jit-just-in-time-liquidity) · [`RFQ`](#rfq-request-for-quote) · [`DLOB`](#dlob-decentralized-limit-order-book) · [`perpetual futures`](#perpetual-futures-perp) · [`observation cardinality`](#observation-cardinality) · [`Slots and epochs`](#slots-and-epochs-ethereum-pos) · [`MEV`](#mev)
-🔖 [Layer2 Beat](https://l2beat.com/scaling/tvl)   
-🔖 [Defi Llama](https://defillama.com/)    
+[Layer2 Beat](https://l2beat.com/scaling/tvl)   
+[Defi Llama](https://defillama.com/)    
 
 [Eigenphi](https://eigenphi.io/) - tracking data   
 [DeFi vs TradeFi](https://coinstove.com/learn/defi-vs-tradfi/)   
@@ -597,7 +616,7 @@ Nomi Prins - [Collusion: How Central Bankers Rigged the World](https://www.amazo
      
 -----   
    
-## 🔖 Tools 
+## Tools 
   - [Alchemy](https://www.alchemy.com/)
   - [Echidna](https://github.com/crytic/echidna)
        - [Article](https://bushido-sec.com/index.php/2023/07/27/fuzzing-smart-contracts/)
@@ -744,7 +763,7 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 - **Improper Use of Libraries:**  
   Not leveraging safe math libraries (or relying on outdated versions), leading to potential overflows/underflows.
 
-`Application-specific integrated circuit` or [ASIC](https://www.businessinsider.com/personal-finance/asic-mining?op=1) - The most powerful computer has the greatest chance of solving the puzzle, and so ASIC mining was created to maximize the possibility of mining; see also [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit)    
+`Application-specific integrated circuit (ASIC)` - specialized hardware designed for a specific task. In crypto, ASICs were used for PoW mining (Bitcoin still uses them). **Note:** Ethereum transitioned to Proof-of-Stake in September 2022 (The Merge), so ASIC/GPU mining no longer applies to Ethereum.    
 
 `arrays` - fixed [2] length of 2 elements and dynamic [] arrays with no fixed size; can also create an array of structs or 2D array     
 
@@ -758,7 +777,7 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `Black Thursday` [article](https://decrypt.co/61200/bitcoin-black-thursday-one-year-later) - Thursday March 12th, 2020: cryptocurrency markets suddenly collapsed (in tandem with traditional markets), with bitcoin prices getting halved in less than a day.   
 
-`blob` - binary large object is a collection of data of an arbitrary size. Blobs do not have to follow a given format or have any metadata associated with them. They are a series of bytes, with each byte made up of 8 bits (a 1 or a 0, hence the "binary" descriptor). Any type of data can go in a blob; efficient and cheap transaction.   
+`blob` - introduced in Dencun (EIP-4844, March 2024) for L2 data availability. Binary large objects (~128KB each) attached to transactions, stored temporarily (~18 days) rather than permanently. Much cheaper than calldata for rollup data posting. Pectra increased blob throughput (3→6 target per block); Fusaka adds PeerDAS for further scaling. Key for Ethereum's rollup-centric roadmap.   
 
 `block.timestamp` - convert a uint of the number of seconds in that length of time. So 1 minutes is 60, 1 hours is 3600 (60 seconds x 60 minutes), 1 days is 86400 (24 hours x 60 minutes x 60 seconds), find on [cheatsheet](https://docs.soliditylang.org/en/latest/cheatsheet.html)    
 
@@ -776,7 +795,7 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `Compound` - a DeFi lending protocol that allows users to earn interest on their cryptocurrencies by depositing them into one of several pools      
 
-`coinbase transaction` - the first transaction in a block. Miners use it to collect the block reward, and any additional transaction fees.   
+`coinbase transaction` - in PoW chains (e.g., Bitcoin), the first transaction in a block where miners collect the block reward and fees. **Note:** Ethereum (post-Merge, Sept 2022) uses PoS; validators receive rewards via the consensus layer. The term `block.coinbase` in Solidity now refers to the fee recipient address set by the block proposer.
 
 `concentrated liquidity` - liquidity placed within a chosen price range (e.g., Uniswap v3). Improves capital efficiency but introduces range selection, rebalancing, and fee-capture timing risks (see [`JIT`](#jit-just-in-time-liquidity)).
 
@@ -827,12 +846,16 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `ENS - Ethereum Name Service` -  distributed, open, and extensible naming system based on the Ethereum blockchain; [documents](https://docs.ens.domains/) and [video](https://www.youtube.com/watch?v=P8RlPsjGaR8)   
 
-`EIP` - (Ethereum Improvement Proposal) a formal proposal to alter some element of the Ethereum network   
+`EIP` - (Ethereum Improvement Proposal) a formal proposal to alter some element of the Ethereum network
+
+`EIP-7702` - introduced in the Pectra upgrade (May 2025), enables EOAs to temporarily act like smart contract accounts for specific transactions via a new type-4 transaction. Users sign an off-chain authorization specifying a delegate contract; the EOA's behavior temporarily becomes that of the delegate. Enables transaction batching, gas sponsorship, passkey authentication, and spending limits without requiring a new address.
+   - **Security risks:** Phishing attacks where users are tricked into signing malicious delegation authorizations; replay/cross-chain risks; dependency on trusted delegate contracts.
+   - **Best practices:** Only delegate to audited contracts; inspect nonces and chain IDs; use simulation tools; keep bulk assets in non-delegated EOAs.   
 
 <a id="erc-4626-tokenized-vault-standard"></a>
 `ERC-4626 (Tokenized Vault Standard)` - standard interface for tokenized vaults. Auditing checks: preview/mint/redeem alignment, rounding direction (user-favorable), share:asset ratio monotonicity, fee accrual and share dilution correctness, totalAssets consistency, edge cases on zero/first depositor.
 
-`EOA` - Externally Owned Account; in general, there are two types of accounts: externally owned accounts, controlled by private keys, and contract accounts, controlled by their contract code   
+`EOA` - Externally Owned Account; controlled by private keys (vs. contract accounts controlled by code). Post-Pectra (May 2025), EOAs can temporarily delegate to smart contract logic via EIP-7702, enabling features like batching, gas sponsorship, and passkeys while retaining the same address. This blurs the traditional EOA vs. contract account distinction.   
 
 `events` - allow logging to the Ethereum blockchain; Use cases for events are: Listening for events and updating user interface; cheap form of storage 
 	- Anonymous Solidity Event - does not store its signature in the topics list of the log. Instead, only the arguments are stored.
@@ -856,7 +879,13 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `flooding` - [routing](https://en.wikipedia.org/wiki/Flooding_%28computer_networking%29)   
 
-`fork` - [investopedia](https://www.investopedia.com/terms/h/hard-fork.asp) "To fork or not to fork? - a radical change to a network's protocol that makes previously invalid blocks and transactions valid, or vice-versa. A hard fork requires all nodes or users to upgrade to the latest version of the protocol software; twitter [status](https://twitter.com/christine_dkim/status/1651999278997417998?s=20)    
+`fork` - a radical change to a network's protocol that makes previously invalid blocks and transactions valid, or vice-versa. A hard fork requires all nodes to upgrade.
+
+**Ethereum Upgrade Timeline (recent):**
+- **Pectra** (May 7, 2025): Prague + Electra. Key EIPs: EIP-7702 (EOA account abstraction), EIP-7251 (validator max balance to 2048 ETH), EIP-6110 (faster deposits), EIP-7691 (blob throughput increase 3→6 target), EIP-2537 (BLS12-381 precompile).
+- **Fusaka** (Dec 3, 2025): Fulu + Osaka. Key EIPs: EIP-7594 (PeerDAS for data availability sampling), EIP-7935 (60M block gas limit), EIP-7825 (16.7M tx gas cap), EIP-7951 (secp256r1/P-256 precompile for WebAuthn), EIP-7939 (CLZ opcode). BPO forks follow for incremental blob scaling.
+- **Dencun** (Mar 2024): Introduced blobs (EIP-4844) for L2 data availability, `TSTORE`/`TLOAD` transient storage, deprecated `SELFDESTRUCT`.
+- **Shanghai** (Apr 2023): Enabled staking withdrawals post-Merge.    
 
 `function selector` - first 4 bytes of the function signature: ex: 0xa9059cbb; excellent Patrick Collins section [22:46:43](https://youtu.be/gyMwXuJrbJQ?list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&t=82003); [shorter video](https://www.youtube.com/watch?v=Mn4e4w8h6n8); there can be function selector clashes   
 `function signature` - string that defines function name & parameters: ex: “transfer(address, uint256)”   
@@ -967,7 +996,9 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `ownable` - an [owner](https://docs.openzeppelin.com/contracts/4.x/api/access#Ownable) who has special privileges   
 
-`permission vs permissionless` - [comparison](https://permission.io/blog/permissioned-vs-permissionless-blockchain/) permissioned blockchains are distributed ledger technology (DLT) that sacrifice some degree of decentralization and anonymity to better suit business needs as well as achieve higher network speed and efficiency.   
+`PeerDAS (Peer Data Availability Sampling)` - introduced in Fusaka (EIP-7594), allows nodes to verify blob data availability by sampling rather than downloading entire blobs. Major scaling improvement for rollups; reduces bandwidth/storage requirements while maintaining security. Enables higher blob throughput without proportionally increasing node burden.
+
+`permission vs permissionless` - permissioned blockchains sacrifice decentralization/anonymity for business needs, speed, and efficiency. Permissionless (like Ethereum mainnet) allow anyone to participate.   
 
 `perpetual futures (perp)` - a leveraged derivative with no expiry. Traders post margin and take long/short exposure; periodic funding payments between longs and shorts keep the mark price near an external index price (oracle). Positions are liquidated when margin cannot cover losses.
 
@@ -1019,7 +1050,7 @@ These pull-based patterns are widely adopted in decentralized finance (DeFi) pro
 
 `safeMath` - before 0.8.0. there were overflow and underflow issues; prior to that version, solidity's "+" operator wouldn't check for overflows, leading to type(uint256).max + 1 = 0, and the safeMath library would avoid it. Now, type(uint256).max + 1 reverts with Panic(0x11), and safeMath isnt needed.   
 
-`self destruct` - leaves a blank account; costs negative gas, does not remove transaction history: only can be self destructed if contract has self destruct programmed in  
+`selfdestruct` - **Deprecated as of Dencun (March 2024)**. Previously allowed contracts to destroy themselves and send remaining ETH to a designated address. Now only transfers ETH without destroying code/storage (unless created in same transaction). Contracts using legacy `selfdestruct` behavior may break. Auditors should flag any reliance on code deletion.  
 
 [sequencer](https://blog.bingx.com/blockchain-en/what-are-sequencers-in-ethereum-network#:~:text=A%20sequencer%20refers%20to%20a,and%20integrity%20of%20the%20blockchain) - responsible for sorting transactions and it records the (batch) transactions on its local blockchain platform; Layer 2: Arbitrum, Optimism
 	 - `Schnorr` - introduces a commitment scheme for transaction ordering that enables transaction-level commitments instead of batching transactions together. 
@@ -1062,6 +1093,8 @@ Aggregators BLS-aggregate attestations into blocks; timely, correct attestations
 
 `topics` - indexed parameters for ‘logged’ events allow you to search for these events using the indexed parameters as filters; at most 3 parameters can receive the property indexed   
 
+
+`transient storage` - introduced in Dencun (EIP-1153, March 2024). Uses `TSTORE` and `TLOAD` opcodes for storage that persists only within a transaction (cleared after tx ends). Much cheaper than regular storage (~100 gas vs 20,000). Ideal for reentrancy locks, callback data, and intra-transaction state. Auditors: check for assumptions about persistence.
 `TPS` - transactions per second [chart](https://coincodex.com/article/14198/layer-1-performance-comparing-6-leading-blockchains/)     
 
 `transfer vs. transferFrom (aka delegatedTransfer)` - `transfer` - simply transfer the tokens from one address to another; `transferFrom` -you give permission for someone else to transfer from your account; someone else can be either an externally-owned account or a smart-contract account   
