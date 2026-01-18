@@ -1,6 +1,6 @@
 ## Smart Contract Resources
 
-A curated set of Solidity/EVM learning resources plus a growing collection of vulnerable contracts.
+A curated set of EVM resources and collection of vulnerable contracts.
 
 ### Contents
 
@@ -24,9 +24,11 @@ A curated set of Solidity/EVM learning resources plus a growing collection of vu
 - [Vulnerability catalog](https://github.com/kadenzipfel/smart-contract-vulnerabilities)
 
 - **Real-world incidents**
+  - [Blockthreat Intelligence](https://newsletter.blockthreat.io/)
   - [DeFiLlama hacks database](https://defillama.com/hacks)
   - [Rekt](https://rekt.news/) (incident writeups)
   - [Web3 is going great](https://web3isgoinggreat.com/) (industry failures and incentives)
+  Matt Levine: [Bloomberg](https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine) Opinion Columnist per [Dan Robinson](https://youtu.be/Lz7g0ny99jk?t=3183) 
 - **MEV**
   - [Ethereum MEV docs](https://ethereum.org/en/developers/docs/mev/)
   - [Flashbots docs](https://docs.flashbots.net/)
@@ -43,94 +45,20 @@ A curated set of Solidity/EVM learning resources plus a growing collection of vu
 - [Solidity Contract Layout](https://github.com/Cyfrin/foundry-full-course-f23#solidity-contract-layout)
 - [RareSkills GitHub](https://github.com/RareSkills)
 
-## Tutorial Resources
-
-`1. Patrick Collins Courses:` 
-   -  Harhat Course - [Youtube](https://www.youtube.com/watch?v=gyMwXuJrbJQ&list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&t=12715s) and [Github](https://github.com/smartcontractkit/full-blockchain-solidity-course-js)   
-   -  Foundry Course - [Youtube](https://github.com/Cyfrin/foundry-full-course-f23) and [Github](https://github.com/Cyfrin/foundry-full-course-f23)
-   -  Smart Contract Audits, Security, and DeFi Course [Youtube](https://www.youtube.com/watch?v=pUWmJ86X_do&t=64331s) and [Github](https://github.com/Cyfrin/security-and-auditing-full-course-s23)   
-  
-`2. Smart Contract Programmer:` 
-   - [Youtube](https://www.youtube.com/@smartcontractprogrammer) (one of the creators of Solidity by example)   
-   - [Foundry playlist](https://www.youtube.com/playlist?list=PLO5VPQH6OWdUrKEWPF07CSuVm3T99DQki)
-
-`3. Guardian Audits - Advanced Web3 Security Course`
-   - [Youtube](https://www.youtube.com/watch?v=DRZogmD647U)
-   - [Gateway-Free-Web3-Security-Course](https://guardianaudits.notion.site/guardianaudits/Gateway-Free-Web3-Security-Course-574f4d819c144d7895cda6d61ba26503)
-
-[Secureum Mind Map](https://github.com/x676f64/secureum-mind_map)    
-[Teachyourselfcrypto.com](https://teachyourselfcrypto.com/) (great links to DeFi)   
-
 -----
-
-## General Blockchain Knowledge
-[Blockchain Developer Roadmap](https://roadmap.sh/blockchain) - [more detailed](https://github.com/OffcierCia/DeFi-Developer-Road-Map) (tons on Twitter)   
-[Blockchain 101](https://www.youtube.com/watch?v=_160oMzblY8) (video)    
-[How Bitcoin Works](https://youtu.be/Lx9zgZCMqXE) (video)   
-[Whiteboard Crypto](https://www.youtube.com/@WhiteboardCrypto)   
-[Finematics](https://www.youtube.com/@Finematics)   
-[Why Hexadecimal](https://www.youtube.com/watch?v=dPxCGlW9lfM&t=367s) and [256 Bit Computing](https://en.wikipedia.org/wiki/256-bit_computing)   
-
------    
-
-### News
-[Blockthreat Intelligence](https://newsletter.blockthreat.io/)
-
------
-
-### Youtube Resources
-
-[Blockchain and Money](https://www.youtube.com/playlist?list=PLUl4u3cNGP63UUkfL0onkxF6MYgVa04Fn) (MIT Fall 2018) ...taught by Gary Gensler...   
-   - Conceptual idea of contracts with Harvard Prof. [Lawrence Lessig](https://youtu.be/JPkgJwJHYSc)  
-
-[Campbell Harvey](https://www.youtube.com/@campbellharvey) (Prof. Duke) author of DeFi and the Future of Finance    
-[Berkeley](https://youtube.com/@blockchain-web3moocs635) -- [Berkeley DeFi class](https://rdi.berkeley.edu/berkeley-defi/f22) (for the AMA’s) and subscribe to [RDI](https://rdi.berkeley.edu/)     
-[Ethereum Engineering Group](https://www.youtube.com/@EthereumEngineeringGroup)  (Peter Robinson - Head of Blockchain at Immutable X)    
-
------
-
-### Reading
-[Mastering Ethereum](https://github.com/ethereumbook/ethereumbook) - essential guide both general and technical (*FREE*)    
-[Mastering Bitcoin](https://github.com/bitcoinbook/bitcoinbook) -  bit more technical (and perhaps duller) than Mastering Ethereum (*FREE*)   
-[Deconstructing Solidity](https://blog.openzeppelin.com/deconstructing-a-solidity-contract-part-i-introduction-832efd2d7737) - breaks down Solidity to its byte code
-
-[The Infinite Machine](https://www.barnesandnoble.com/w/the-infinite-machine-camila-russo/1133319507) - historical context how Ethereum started, think The Social Network meets Silicon Valley   
-[The Art of Invisibility](https://www.amazon.com/Art-Invisibility-Worlds-Teaches-Brother/dp/0316380520/ref=pd_bxgy_vft_none_img_sccl_1/143-3045608-6084059?pd_rd_w=egSFy&content-id=amzn1.sym.26a5c67f-1a30-486b-bb90-b523ad38d5a0&pf_rd_p=26a5c67f-1a30-486b-bb90-b523ad38d5a0&pf_rd_r=BCV539P93WX905Q01N2H&pd_rd_wg=DwfOg&pd_rd_r=ffede342-f9c3-4674-bae2-6e14f69a9fb4&pd_rd_i=0316380520&psc=1) - (David M) about online anonymity   
-[Tracers in the Dark](https://www.amazon.com/Tracers-Dark-Global-Crime-Cryptocurrency/dp/0385548095) by [Andy Greenberg](https://www.wired.com/author/andy-greenberg/) - covers transparency of Bitcoin and cybercrime - 10/10 recommend! 
-   - [How to Peel a Million: Validating and Expanding Bitcoin Clusters](https://arxiv.org/pdf/2205.13882.pdf) - Sarah Meiklejohn and team   
-
-How to DeFi: [Beginner](https://www.amazon.com/How-DeFi-Beginner-Coin-Gecko/dp/B098GT2PSG) and/or [Advanced](https://www.amazon.com/dp/B098H215P3?tag=uuid10-20)   
-[DeFi and the Future of Finance](https://www.amazon.com/DeFi-Future-Finance-Campbell-Harvey/dp/1119836018) - particularly Chapter 6: deep dive      
-
-Matt Levine: [Bloomberg](https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine) Opinion Columnist per [Dan Robinson](https://youtu.be/Lz7g0ny99jk?t=3183)    
-
------  
-### Podcasts 
+   
 [Bankless](http://podcast.banklesshq.com/)   
 [Unchained](https://unchainedcrypto.com/podcasts/)   
 [Scraping Bits](https://rss.com/podcasts/scrapingbits/)   
 
 -----   
-### Interactive (CTF, Capture the Flags)
-[Ethernaut Challenges](https://ethernaut.openzeppelin.com/) via OpenZeppelin   
-   - [In Foundry](https://github.com/ciaranmcveigh5/ethernaut-x-foundry)
-   - [D-Squared's Channel](https://www.youtube.com/@d-squared70/videos) and [DeFiDeveloperAcademy's Channel](https://www.youtube.com/@DeFiDeveloperAcademy)   
- 
+### Interactive (
+
 [Damn Vulnerable DeFi](https://www.damnvulnerabledefi.xyz/)    
    - [In Foundry](https://github.com/nicolasgarcia214/damn-vulnerable-defi-foundry)   
 
-[Paradigm CTFs](https://ctf.paradigm.xyz/)    
-[Crypto Zombies](https://cryptozombies.io/) (old)     
-[Speed Run Ethereum](https://speedrunethereum.com/) via [Austin Griffith](https://www.youtube.com/@austingriffith3550/videos)   
-[JumpCryptoHQ](https://github.com/keone/crypto-reading-list/blob/main/Exercises.md) exercises   
 
------
-### Interviews and Questions   
-- [10 Solidity Questions](https://www.youtube.com/watch?v=Vzjc-xffhJs)   
-- [40 Solidity Questions](https://www.youtube.com/watch?v=tpekiuASieo)   
-- [100 Solidity Questions](https://youtu.be/FoCM07HlfhU?t=1644)   
-- [Rareskills 140 interview questions for Ethereum Developers](https://www.rareskills.io/post/solidity-interview-questions)   
-- [Jumpdest](https://www.jumpdest.dev/)   
+- [Rareskills 140 interview questions for Ethereum Developers](https://www.rareskills.io/post/solidity-interview-questions)    
   
 ----- 
 
@@ -220,10 +148,6 @@ These components allow the network to verify the transaction was signed by the s
 
 ## Hacks and Security
 
-[2022 Auditor Rewind by Patrickd (Secureum)](https://ventral.digital/posts/2022/12/15/ethereum-smart-contract-auditors-2022-rewind)   
-[Top 10 Vulnerabilities In Web3](https://medium.com/immunefi/the-top-10-most-common-vulnerabilities-in-web3-bf7a921d489f)   
-[Attacks via Consensys Best Practices](https://consensys.github.io/smart-contract-best-practices/attacks/)   
-
 - [Seal-911](https://github.com/security-alliance/seal-911)
 
 - Access Control
@@ -245,19 +169,12 @@ These components allow the network to verify the transaction was signed by the s
   	- [Chainlink Oracle Security Considerations](https://medium.com/cyfrin/chainlink-oracle-defi-attacks-93b6cb6541bf#87fc)   
 - [Replay attack](https://learn.bybit.com/blockchain/what-is-a-replay-attack/) - a replay of a transaction primarily taken place while a hard fork is being implemented; a delay or intercept data transmission that occurs over a network. This information can then be processed and repeated numerous times to effectively duplicate transactions   
   
-[Quick vulnerabilities walkthrough](https://youtu.be/JMf5P2DXfkM)    
 [DeFiHackLabs](https://github.com/SunWeb3Sec/DeFiHackLabs) - to produce DeFi hack incidents using Foundry.   
 [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs) -learn common smart contract vulnerabilities using Foundry.   
-
-### Known Exploiter addresses: 
-   - Conic Finance Exploiter [address](https://etherscan.io/address/0x8d67db0b205e32a5dd96145f022fa18aae7dc8aa)
-   - Jared from Subway's MEV bot [address](https://etherscan.io/address/0xae2fc483527b8ef99eb5d9b44875f005ba1fae13)
-   - JPEG’D [address](https://etherscan.io/address/0x6ec21d1868743a44318c3c259a6d4953f9978538)    
 
 -----   
 
 ### Audits
-`What is an audit?` - security focused code review; it is a best effort endeavor, not a guarantee  
 [Audit Techniques & Tools 101](https://secureum.substack.com/p/audit-techniques-and-tools-101?utm_campaign=post&utm_medium=web) by Secureum   
 [What are the Actual Flaws in Important Smart Contracts](https://arxiv.org/abs/1911.07567v1)     
 [Cantina](https://cantina.xyz/welcome)   
