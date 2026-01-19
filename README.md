@@ -23,22 +23,36 @@ A curated set of EVM resources and collection of vulnerable contracts.
   - [Web3 is going great](https://web3isgoinggreat.com/)
 
   - Matt Levine: [Bloomberg](https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine) Opinion Columnist per [Dan Robinson](https://youtu.be/Lz7g0ny99jk?t=3183) 
-  
+   
 [Bankless](http://podcast.banklesshq.com/)   
 [Unchained](https://unchainedcrypto.com/podcasts/)   
-[Scraping Bits](https://rss.com/podcasts/scrapingbits/)  
+[Scraping Bits](https://rss.com/podcasts/scrapingbits/)   
 
   - [RareSkills GitHub](https://github.com/RareSkills)
   - [Rareskills 140 interview questions for Ethereum Developers](https://www.rareskills.io/post/solidity-interview-questions)    
 
 ### Tooling
 
-- [Remix](https://remix.ethereum.org/) (quick prototyping)
-- [Foundry book](https://book.getfoundry.sh/) - also see [Awesome Foundry](https://github.com/crisgarner/awesome-foundry#awesome-foundry)
-- [Hardhat](https://hardhat.org/hardhat-runner/docs/getting-started#overview)
-- [Slither](https://github.com/crytic/slither) - static analyzer
-- [Echidna](https://github.com/crytic/echidna) - fuzzing tool
-- [Solidity Contract Layout](https://github.com/Cyfrin/foundry-full-course-f23#solidity-contract-layout)
+**Development Environments:**
+- [Remix](https://remix.ethereum.org/) - browser-based IDE for quick prototyping
+- [Foundry](https://book.getfoundry.sh/) - fast Solidity testing framework. See also: [Awesome Foundry](https://github.com/crisgarner/awesome-foundry), [Cheat Codes](https://book.getfoundry.sh/cheatcodes/)
+- [Hardhat](https://hardhat.org/hardhat-runner/docs/getting-started#overview) - Ethereum development environment. Features: [forking mainnet](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks), console.log via `import "hardhat/console.sol"`
+
+**Static Analysis & Security:**
+- [Slither](https://github.com/crytic/slither) - static analyzer with MCP (Model Context Protocol) support for AI assistants
+
+**Fuzzing & Dynamic Analysis:**
+- [Echidna](https://github.com/crytic/echidna) - property-based fuzzer (Haskell-based). See: [fuzzing guide](https://bushido-sec.com/index.php/2023/07/27/fuzzing-smart-contracts/)
+- [Medusa](https://github.com/crytic/medusa) - coverage-guided fuzzer (Go-based, faster than Echidna with parallel workers)
+- [Mythril](https://github.com/ConsenSys/mythril) - symbolic execution, SMT solving, and taint analysis. See also: [MythX](https://github.com/muellerberndt/awesome-mythx-smart-contract-security-tools)
+
+
+**Libraries & SDKs:**
+- [Ethers.js](https://docs.ethers.org/v5/single-page/) - Ethereum library and wallet implementation
+- [Web3.js](https://web3js.org/#/) - Ethereum JavaScript API
+- [Wagmi](https://wagmi.sh/) - React hooks for Ethereum
+
+- [Inline bookmarks](https://marketplace.visualstudio.com/items?itemName=tintinweb.vscode-inline-bookmarks) - VSCode extension for audit notes (e.g., `// @audit`)
 
 ----- 
 
@@ -48,6 +62,7 @@ A curated set of EVM resources and collection of vulnerable contracts.
 ### Core Resources
 - [Solidity Internals: Layout in memory](https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html)   
 - [Solidity Internals: Layout in storage](https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html)
+- [Solidity Contract Layout Guide](https://github.com/Cyfrin/foundry-full-course-f23#solidity-contract-layout) - best practices for organizing Solidity code
 - [Solidity Optimizer](https://docs.soliditylang.org/en/latest/internals/optimizer.html) - IR-based (`via_ir`) optimizer recommended for modern contracts
 - [EVM Opcodes Reference](https://ethereum.org/en/developers/docs/evm/opcodes/) - official docs | [evm.codes](https://www.evm.codes/) - interactive playground   
 - [4byte signature DB](https://www.4byte.directory/) or [OpenChain](https://openchain.xyz/signatures)   
@@ -62,9 +77,7 @@ A curated set of EVM resources and collection of vulnerable contracts.
 - [Brief storage video](https://youtu.be/_YkulBTqIcQ?t=522)    
 - [Storage vs Memory explained](https://soliditytips.com/articles/solidity-data-location-storage-memory/)   
 - [Gas-optimization course](https://www.udemy.com/course/advanced-solidity-understanding-and-optimizing-gas-costs/?referralCode=C4684D6872713525E349) by Jeffrey Scholz ([RareSkills](https://github.com/RareSkills))   
-- [Ethernaut Lvl 19 MagicNumber](https://medium.com/coinmonks/ethernaut-lvl-19-magicnumber-walkthrough-how-to-deploy-contracts-using-raw-assembly-opcodes-c50edb0f71a2) - bytecode deployment
 - Foundry Debugger [tutorial](https://youtu.be/sas02qSFZ74?list=PL4Rj_WH6yLgWe7TxankiqkrkVKXIwOP42&t=25270)   
-
 [Play with opcodes](https://www.evm.codes/playground)      
 
 **Recent Opcode Additions:**
@@ -166,24 +179,41 @@ A curated set of EVM resources and collection of vulnerable contracts.
 
 -----
 
-## Transactions and Signatures: 
+## Transactions and Signatures
 
-### V, R, S in Transactions
+### Transaction Types (EIP-2718 Typed Transaction Envelope)
 
-In Ethereum, the `V`, `R`, and `S` are components of the ECDSA (Elliptic Curve Digital Signature Algorithm) signature used to verify transaction authenticity:
+Per *[Mastering Ethereum (2nd Edition)](https://masteringethereum.xyz/)*, Ethereum supports multiple transaction formats, each identified by a type prefix:
 
-- **R (32 bytes)**: The x-coordinate of the random point selected during the signing process.
-- **S (32 bytes)**: A deterministic value ensuring signature uniqueness and validity.
-- **V (1 byte)**: The recovery ID, used to identify the correct public key for signature verification. It also includes the chain ID to protect against replay attacks (EIP-155).
+| Type | Name | EIP | Introduced | Description |
+|------|------|-----|------------|-------------|
+| **Type 0** | Legacy | Pre-EIP-2718 | Genesis | Original transaction format. No type prefix. Uses `gasPrice`. |
+| **Type 1** (0x01) | Access List | [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) | Berlin (Apr 2021) | Adds `accessList` to pre-declare storage slots and addresses accessed. Reduces gas for cross-contract calls. |
+| **Type 2** (0x02) | Dynamic Fee (EIP-1559) | [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) | London (Aug 2021) | Replaces `gasPrice` with `maxFeePerGas` and `maxPriorityFeePerGas`. Burns base fee, tips validators. |
+| **Type 3** (0x03) | Blob Transaction | [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) | Dencun (Mar 2024) | Carries blob data for L2 rollups. Uses separate blob fee market. Max 6 blobs per block (Pectra). |
+| **Type 4** (0x04) | Set Code (EOA Delegation) | [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) | Pectra (May 2025) | Allows EOAs to temporarily set account code for one transaction, enabling account abstraction features. |
 
-These components allow the network to verify the transaction was signed by the sender's private key and recover the sender's Ethereum address for validation.
+**Key Points:**
+- Type 2 (EIP-1559) is the most common transaction type as of 2026
+- Type 3 (blob transactions) are primarily used by L2 rollups for data posting
+- Type 4 enables EOAs to act like smart contracts temporarily without changing addresses
+- Legacy (Type 0) transactions still work but are less gas-efficient
+
+### ECDSA Signature Components (V, R, S)
+
+All Ethereum transactions use ECDSA (Elliptic Curve Digital Signature Algorithm) signatures with three components:
+
+- **R (32 bytes)**: The x-coordinate of the random point selected during the signing process
+- **S (32 bytes)**: A deterministic value ensuring signature uniqueness and validity  
+- **V (1 byte)**: The recovery ID used to identify the correct public key for signature verification. Also includes the chain ID to protect against replay attacks ([EIP-155](https://eips.ethereum.org/EIPS/eip-155))
+
+These components allow the network to verify the transaction was signed by the sender's private key and cryptographically recover the sender's Ethereum address for validation.
 
 -----
 
 ## Hacks and Security
 
 - [Seal-911](https://github.com/security-alliance/seal-911)
-
   
 - [Reentrancy Attacks](https://github.com/pcaversaccio/reentrancy-attacks) - relies on a certain order of operations; a reentrant procedure can be interrupted in the middle of its execution. Following the interruption, the procedure can be called again (“reentered”) before its previous invocations complete execution; exploits “fallback”
      - `single-function`
@@ -201,22 +231,16 @@ These components allow the network to verify the transaction was signed by the s
 - Oracle Manipulation - [Awesome-oracle-manipulation](https://github.com/0xcacti/awesome-oracle-manipulation) 
   	- [Chainlink Oracle Security Considerations](https://medium.com/cyfrin/chainlink-oracle-defi-attacks-93b6cb6541bf#87fc)   
 - [Replay attack](https://learn.bybit.com/blockchain/what-is-a-replay-attack/) - a replay of a transaction primarily taken place while a hard fork is being implemented; a delay or intercept data transmission that occurs over a network. This information can then be processed and repeated numerous times to effectively duplicate transactions   
-
+  
 
 -----   
 
 ### Audits
-[Audit Techniques & Tools 101](https://secureum.substack.com/p/audit-techniques-and-tools-101?utm_campaign=post&utm_medium=web) by Secureum   
-[What are the Actual Flaws in Important Smart Contracts](https://arxiv.org/abs/1911.07567v1)     
+
 [Weird ERC20](https://github.com/d-xo/weird-erc20#revert-on-zero-value-transfers)  
 [The Solcurity Standard](https://github.com/transmissions11/solcurity) audit checklist    
 
 [Daily Warden](https://www.dailywarden.com/) - active and upcoming security contests   
-`
-     
-1. solidity/evm oriented bugs, this include bugs based on compiler version or certain evm specific bugs
-2. Logical bugs, this is arguably the biggest surface for attacks as it can be very project-specific
-3. Ecosystem oriented bugs, includes projects explicit and implicit interaction with whole blockchain: frontrunning/sandwiching, oracle manipulations, incorrect integrations, flashloan attacks, all go here
 
 - `timeboxing` - allocate a fixed, maximum amount of time and step out of the rabbit hole; move on. 
 
@@ -229,7 +253,7 @@ Modern auditing checklist (concise):
 - Token standards: ERC-20 quirks (fee-on-transfer, non-standard returns), ERC-721/1155 safety, [`ERC-4626`](#erc-4626-tokenized-vault-standard) rounding and preview/convert alignment.
 - Economic sims: liquidation thresholds, interest kink params, funding-rate logic for [`perpetual futures`](#perpetual-futures-perp), auction/solver incentives for [`intents`](#intents).
 - L2/L1 bridges: replay protection, message ordering, proof windows, sequencer liveness checks.
-  
+
 
 Most auditor discussions are on Twitter.   
 - [Christoph Michel](https://learneos.dev/#packages) (#1 auditor on [Code4Arena](https://code4rena.com/leaderboard)) and [blog](https://cmichel.io/how-to-become-a-smart-contract-auditor/) mentions Khan A. for [Finance](https://www.khanacademy.org/economics-finance-domain/core-finance/derivative-securities))                   
@@ -237,47 +261,28 @@ Most auditor discussions are on Twitter.
 - [Pashov](https://twitter.com/pashovkrum) and [Pashov’s audits](https://github.com/pashov/audits/tree/master/solo)   
 - [Andy Li's road map](https://youtu.be/-469Gcye-ZE)
 - [0kage.eth road map](https://twitter.com/0kage_eth/status/1640795980101742592?s=46&t=ezf5V_RX8d4d4zdIpUUrWQ)   
-- [Jackson Kelley](https://www.youtube.com/watch?v=xD0IZh9c8LM)            
-- Patrick Collins - [How to Audit a Smart Contract](https://www.youtube.com/watch?v=TmZ8gH-toX0) and Lesson 13: Aave liquidationCall()    
-- [Chainlink Auditing 101](https://www.youtube.com/watch?v=0aJfCug1zTM)      
+- Patrick Collins - [How to Audit a Smart Contract](https://www.youtube.com/watch?v=TmZ8gH-toX0) and Lesson 13: Aave liquidationCall()      
 - [Owen Thurm's Channel](https://www.youtube.com/@0xOwenThurm)   
-- Blue Alder - [Wallet Mining Walkthrough](https://www.youtube.com/watch?v=7PS-wuIsZ4A)
 - [Dacian's blog](https://dacian.me/smart-contract-auditor-portfolio)
 - [Volodya's Blog](https://0xvolodya.hashnode.dev/how-i-earned-25000-auditing-and-ranked-1-on-60-day-leaderboard)
-- [Blockchain Threat Intelligence Blog](https://newsletter.blockthreat.io/)
 - [Addison Spiegel](https://addison.is/posts/curve-whitehat) Curve Finance White Hat
   - [Etherscan transaction](https://etherscan.io/tx/0x006763dff653ecddfd3681181a29e7e6d6c2aaa7bafb27fe1376f3f7ce367c1e)
-
-- [The Auditooor Grindset blog](https://www.zellic.io/blog/the-auditooor-grindset)   
-- [5 Solidity Code Smells](https://medium.com/coinmonks/5-solidity-code-smells-87bb2f259dde)   
-  
-[Simple-security-toolkit](https://github.com/nascentxyz/simple-security-toolkit)   
-[Auditing heuristics](https://github.com/OpenCoreCH/smart-contract-auditing-heuristics)   
+ 
 
 1. Find a project, search for bugs
 2. Find a bug, search for projects
 3. Be fast with new updates
 4. Know tools
 
-Typical Risk classification:
-|Severity level | Impact: High | Impact: Medium | Impact: Low |
-| ------------- | ------------- | ------------- | ------------- |
-| Likelihood: high  | Critical  | High| Medium  |
-| Likelihood: medium | High | Medium  | Low |
-| Likelihood: low | Medium | Low | Low |
-
-`High` - leads to a loss of significant portion (>10%) of assets in protocol, harms a majority of users.   
-`Medium` - global losses <10% or losses to only a subset of users, but still unacceptable.   
-   - `High and Medium` - severity issues ("HM issues”)
-     
-`Low` - losses will be annoying but bearable--applies to things like griefing attacks that can be easily repaired or even gas inefficiencies.   
-`Informational` - findings to improve efficiency   
-`Gas efficiencies` - findings to improve efficiency    
-`Quality Assurance (QA)` - ensure the functionality, security, and efficiency of the smart contract code.   
+### Bug Bounty
+ - [Code4rena](https://code4rena.com/) - [submission policy](https://docs.code4rena.com/roles/wardens/submission-policy)
+ - [Cantina](https://cantina.xyz/competitions)
+ - [CodeHawks](https://www.codehawks.com/)
+ - [Immunefi](https://immunefi.com/)
+ - [Remedy](https://hunt.r.xyz/programs)
+ - [Sherlock](https://www.sherlock.xyz/)
 
 ----- 
-
-### Testing 
 
 #### Fuzzing
 
@@ -337,19 +342,25 @@ Test types: [28:43](https://youtu.be/sas02qSFZ74?list=PL4Rj_WH6yLgWe7TxankiqkrkV
 [Trail of Bits Automated Testing](https://appsec.guide/)    
 Echidna uses more advanced techniques like generating random transactions with random inputs and also keeps track of those transactions to achieve high coverage. On the other hand, Foundry focuses on generating random inputs for your test functions and has support for excluding certain values.   
 
------   
-
-### Bug Bounty
- - [Code4rena](https://code4rena.com/) - [submission policy](https://docs.code4rena.com/roles/wardens/submission-policy)
- - [Cantina](https://cantina.xyz/competitions)
- - [CodeHawks](https://www.codehawks.com/)
- - [Immunefi](https://immunefi.com/)
- - [Remedy](https://hunt.r.xyz/programs)
- - [Sherlock](https://www.sherlock.xyz/)
 
 -----   
 
-----
+## AI-Assisted Security & Development
+
+### AI Agent Skills
+- **[Trail of Bits Skills](https://github.com/trailofbits/skills)** - Claude Code plugin marketplace for security research and vulnerability detection
+  - **Smart Contract Security**: Building-secure-contracts toolkit, entry-point analyzer
+  - **Code Auditing**: Audit context building, differential review, variant analysis, sharp-edges detection
+  - **Verification**: Constant-time analysis, property-based testing, spec-to-code compliance
+  - **Static Analysis**: CodeQL, Semgrep rule creator, SARIF parsing
+  - **Audit Lifecycle**: Fix review, burpsuite project parsing
+  - **Testing**: Testing Handbook skills (fuzzers, sanitizers, coverage tools)
+  - License: CC BY-SA 4.0
+
+### Model Context Protocol (MCP) Servers
+- **[Slither MCP](https://github.com/crytic/slither)** - MCP server for Slither static analyzer, enables AI assistants to run security analysis
+
+-----   
 
 ## Defi
 Key concepts: [`AMM`](#amm) · [`TWAPs`](#twaps-or-time-weighted-average-prices) · [`JIT liquidity`](#jit-just-in-time-liquidity) · [`RFQ`](#rfq-request-for-quote) · [`DLOB`](#dlob-decentralized-limit-order-book) · [`perpetual futures`](#perpetual-futures-perp) · [`observation cardinality`](#observation-cardinality) · [`Slots and epochs`](#slots-and-epochs-ethereum-pos) · [`MEV`](#mev)
@@ -468,37 +479,51 @@ Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)
 - Canary Flaws: small, deliberately injected assertions that should never fire, used to alert you when a fuzzer has reached a dangerous or unexpected path.
 
 
-----
-
 [Slippage Attacks](https://dacian.me/defi-slippage-attacks)    
 [Build a liquidation bot](https://docs.aave.com/faq/liquidations) (docs)/[video](https://youtu.be/gyMwXuJrbJQ?list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&t=72020)    
 [Block stuffing](https://www.youtube.com/watch?v=3aPYkx7G7e0) (video) and [finding](https://github.com/code-423n4/2023-05-venus-findings/issues/525)   
 Aave [decoupling logic from state](https://twitter.com/RareSkills_io/status/1687116196343406594)    
 
-#### DeFi Reports
-[Toxic Liquidation Spirals](https://arxiv.org/abs/2212.07306)   
-[Gauntlet’s Aave Market Risk Assessment](https://gauntlet.network/reports/aave)    
-[Uniswap V3 TWAP Oracle Risk](https://community.chaoslabs.xyz/uniswap/twap)     
-[yAudit Trade Review](https://reports.yaudit.dev/reports/12-2022-RageTrade/#1-high---incorrect-ratios-used-for-delta-neutral-rebalancing)   
-
 
 ----- 
 
 ### [MEV](https://ethereum.org/en/developers/docs/mev/) 
-Maximal extractable value: as a pending transaction sits in a mempool, validators and block proposers have found ways to profit from them by including, excluding or reordering transactions in a block.
-   1. [Simple MEV bot](https://www.youtube.com/watch?v=dXqp4JqKM_I)
-   2. [Jared from Subway’s bot](https://www.youtube.com/watch?v=3YSpbIQ9hVk)
-        
-[Flashbots.net](https://docs.flashbots.net/)    
-[Solid Quant Articles](https://medium.com/@solidquant)    
- - [MEV Bot Templates](https://github.com/solidquant/mev-templates?source=post_page-----72376a820291--------------------------------)
+**Maximal Extractable Value** (formerly "Miner" Extractable Value): the maximum value that can be extracted from block production beyond the standard block reward and gas fees, by including, excluding, or reordering transactions within a block.
 
-[Flashbots Searcher](https://github.com/flashbots/searcher-sponsored-tx)  - repository contains a simple Flashbots "searcher" for submitting a transaction from an executor account, but paying for the transaction from a sponsor account.   
+#### Modern MEV Architecture (Post-Merge)
+After Ethereum's transition to Proof-of-Stake, MEV extraction shifted from miners to validators/block proposers. The ecosystem now operates with **Proposer-Builder Separation (PBS)**:
 
-`Uncle-block Attack` - **Historical (PoW only)**: in Proof-of-Work chains, miners could deliberately exclude certain transactions to later include them in an uncle block, profiting from MEV without executing the transactions. **Note:** Ethereum's Proof-of-Stake (post-Merge, Sept 2022) eliminated uncle/ommer blocks entirely; this attack vector no longer exists on Ethereum.
+- **Block Builders**: Specialized actors who construct blocks by ordering transactions to maximize MEV (e.g., sandwich attacks, arbitrage)
+- **Block Proposers** (Validators): Choose the most profitable block from builders via [MEV-Boost](https://boost.flashbots.net/) and propose it to the network
+- **Searchers**: Identify MEV opportunities and submit bundles to builders
+- This separation professionalizes MEV extraction while allowing validators to earn without running sophisticated infrastructure
 
-[Geth](https://geth.ethereum.org/) - official Go implementation of Ethereum protocol; one of many Ethereum clients available, popular and widely used    
-[Lighthouse](https://lighthouse.sigmaprime.io/) - one of several Ethereum 2.0 clients being developed to support the new Eth2 protocol. Other Eth2 clients include Nimbus, Teku, and Prysm.   
+Per *[Mastering Ethereum (2nd Edition)](https://masteringethereum.xyz/)*, this architecture reduces centralization risks by separating the roles of block construction (builders) and block proposal (validators), while enabling more efficient and competitive MEV markets.
+
+#### Common MEV Attack Types
+- **Sandwich Attacks**: Front-run and back-run a victim's transaction to profit from price slippage
+- **Front-running**: Submit a transaction with higher gas to execute before a known pending transaction
+- **Back-running**: Execute immediately after a target transaction to capitalize on state changes
+- **Arbitrage**: Exploit price differences across DEXs or within the same block
+- **Liquidations**: Monitor lending protocols to liquidate undercollateralized positions for profit
+- **Uncle-block Attack** - **Historical (PoW only)**: Miners could deliberately exclude transactions for uncle blocks. **Note:** Eliminated in Ethereum PoS (post-Merge, Sept 2022)
+
+#### MEV Protection Strategies
+- Use **private transactions** via [Flashbots Protect](https://docs.flashbots.net/flashbots-protect/overview) or similar services
+- Set **minimum return amounts** with appropriate slippage tolerance in DEX swaps
+- Implement **commit-reveal schemes** for sensitive transactions
+- Use **MEV-resistant protocols** (e.g., CowSwap, Eden Network)
+- Consider **batch auctions** instead of continuous AMMs for large trades
+- Monitor the **mempool** for your transactions and adjust gas as needed
+
+#### MEV Resources & Tools
+- [Flashbots Documentation](https://docs.flashbots.net/) - comprehensive guide to MEV infrastructure
+- [Flashbots Searcher Example](https://github.com/flashbots/searcher-sponsored-tx) - simple searcher for sponsored transactions
+- [MEV Bot Templates](https://github.com/solidquant/mev-templates) by Solid Quant
+- [Solid Quant Articles](https://medium.com/@solidquant) - MEV strategy deep dives
+- [MEV-Share](https://docs.flashbots.net/flashbots-mev-share/overview) - orderflow auction for sharing MEV revenue with users
+- [MEV-Explore](https://explore.flashbots.net/) - MEV transaction explorer and analytics
+- [EigenPhi](https://eigenphi.io/) - MEV data and analytics platform   
 
 ----- 
 
@@ -529,60 +554,35 @@ Debase — removing tokens
 [Spot Price Manipulation](https://consensys.github.io/smart-contract-best-practices/attacks/oracle-manipulation/) - A smart contract needs to determine the price of an asset, e.g., when a user deposits ETH into its system. To achieve this price discovery, the protocol consults its respective Uniswap pool as a source. Exploiting this behavior, an attacker can take out a flash loan to drain one side of the Uniswap pool. Due to the lack of data source diversity, the protocol's internal price is directly manipulated, e.g., to 100 times the original value. The attacker can now perform an action to capture this additional value. For example, an arbitrage trade on top of the newly created price difference or an advantageous position in the system can be gained.   
 
 ----- 
-DeFi Wallets to track (TODO add more)       
-- [Address 1](https://etherscan.io/address/0xbe23cbb62064b8b1550ae5ada59c39d45b1e2081)
 
------ 
+### Finance, Markets & Security Reading
 
-### Central Banking Reading
-Susanne Trimbath - [Naked, Short and Greedy: Wall Street's Failure to Deliver](https://www.amazon.com/Naked-Short-Greedy-Streets-Failure/dp/1910151343)   
-Michael Lewis - [Flash Boys](https://www.amazon.com/Flash-Boys-Michael-Lewis-audiobook/dp/B00ICRE1QC/ref=sr_1_1?keywords=flash+boys&qid=1687555418&s=books&sprefix=flash+boys%2Cstripbooks%2C84&sr=1-1) and [The Big Short](https://www.amazon.com/Big-Short-Inside-Doomsday-Machine-ebook/dp/B003LSTK8G)   
-Nomi Prins - [Collusion: How Central Bankers Rigged the World](https://www.amazon.com/Collusion-Central-Bankers-Rigged-World/dp/1568585624)    
-   - [Quote stuffing](https://en.wikipedia.org/wiki/Quote_stuffing)   
-   - [Spoofing](https://en.wikipedia.org/wiki/Spoofing_(finance))   
-   - [Glass Steagall](https://en.wikipedia.org/wiki/Glass%E2%80%93Steagall_legislation)   
-   - [RegSho](https://en.wikipedia.org/wiki/Naked_short_selling#Regulation_SHO)   
-   - [Regulatory capture](https://en.wikipedia.org/wiki/Regulatory_capture)
+#### Web3 & Smart Contract Security (2024-2025)
+- **[Web3 Applications Security and New Security Landscape](https://link.springer.com/book/10.1007/978-3-031-58002-4)** (Ken Huang et al., 2024) - comprehensive coverage of DeFi, NFT, DAO, DEX security; includes quantum threats and AI-related risks
+- **[A Comprehensive Guide for Web3 Security](https://link.springer.com/book/10.1007/978-3-031-39288-7)** (Ken Huang et al., 2023) - wallet & smart contract security, oracles, token economics, and legal/regulatory aspects
+- **[Get Smart: Building Bulletproof Web3 Smart Contract Applications](https://books.apple.com/us/book/get-smart-building-bulletproof-web3-smart-contract/id6738362998)** (Pete Cox, 2024) - hands-on guide to secure contract development, vulnerability patterns, gas optimization, audit prep
+- **[Ultimate Blockchain Security Handbook](https://books.apple.com/us/book/ultimate-blockchain-security-handbook/id6757228354)** (Taha Sajid, 2025) - threat modeling, formal verification, ZK proofs, PKI, auditing practices
+- **[Blockchain Technology for Cyber Defense](https://books.apple.com/us/book/blockchain-technology-for-cyber-defense-cybersecurity/id6657986661)** (Naresh Kshetri et al., 2025) - blockchain as cybersecurity tool for zero-trust, ransomware defense
+
+#### Traditional Finance & Market Manipulation (Classic References)
+- **[Flash Boys](https://www.amazon.com/Flash-Boys-Michael-Lewis-audiobook/dp/B00ICRE1QC)** (Michael Lewis) - HFT, front-running, and speed advantages in traditional markets (parallels to MEV)
+- **[The Big Short](https://www.amazon.com/Big-Short-Inside-Doomsday-Machine-ebook/dp/B003LSTK8G)** (Michael Lewis) - subprime crisis, systemic risk, and market failures
+- **[Naked, Short and Greedy: Wall Street's Failure to Deliver](https://www.amazon.com/Naked-Short-Greedy-Streets-Failure/dp/1910151343)** (Susanne Trimbath) - settlement failures, naked short selling, market plumbing issues
+- **[Collusion: How Central Bankers Rigged the World](https://www.amazon.com/Collusion-Central-Bankers-Rigged-World/dp/1568585624)** (Nomi Prins) - central bank coordination and market manipulation
+
+#### Market Manipulation Techniques (Traditional & Crypto)
+Understanding these traditional finance manipulation tactics helps identify similar patterns in DeFi/MEV:
+- **[Quote stuffing](https://en.wikipedia.org/wiki/Quote_stuffing)** - flooding order books with fake orders (similar to gas price manipulation)
+- **[Spoofing](https://en.wikipedia.org/wiki/Spoofing_(finance))** - placing fake orders to move prices (crypto equivalent: wash trading, fake liquidity)
+- **[Front-running](https://www.investopedia.com/terms/f/frontrunning.asp)** - TradFi version of MEV sandwich attacks
+- **[Payment for Order Flow (PFOF)](https://en.wikipedia.org/wiki/Payment_for_order_flow)** - selling trade information (parallels to private mempools/MEV)
+
+#### Financial Regulation & Systemic Risk
+- **[Glass-Steagall Act](https://en.wikipedia.org/wiki/Glass%E2%80%93Steagall_legislation)** - separation of investment/commercial banking (lessons for DeFi protocol separation)
+- **[Regulation SHO](https://en.wikipedia.org/wiki/Naked_short_selling#Regulation_SHO)** - naked short selling rules (relevant to synthetic assets, flash loans)
+- **[Regulatory capture](https://en.wikipedia.org/wiki/Regulatory_capture)** - how industries influence their regulators (important for DAO governance)
      
 -----   
-   
-## Tools 
-  - [Alchemy](https://www.alchemy.com/)
-  - [Echidna](https://github.com/crytic/echidna)
-       - [Article](https://bushido-sec.com/index.php/2023/07/27/fuzzing-smart-contracts/)
-  - [Ethers](https://docs.ethers.org/v5/single-page/)   
-  - [Etherscan](https://etherscan.io/)
-  - [Foundry](https://book.getfoundry.sh/)
-      - [Cheat Codes](https://book.getfoundry.sh/cheatcodes/)
-  - [Hardhat](https://hardhat.org/hardhat-runner/docs/getting-started#overview)
-      - [Forking mainnet](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks)
-      - Import “hardhat/console.sol”; allows for console.log in Solidity contracts
-  - [Inline bookmarks](https://marketplace.visualstudio.com/items?itemName=tintinweb.vscode-inline-bookmarks) // @audit this code seems vulnerable here
-  - [Medusa](https://github.com/crytic/medusa)     
-  - [Mythril](https://github.com/ConsenSys/mythril)
-       - uses symbolic execution, SMT solving and taint analysis to detect a variety of security vulnerabilities
-       - [MythX](https://github.com/muellerberndt/awesome-mythx-smart-contract-security-tools)
-- [Necessist](https://github.com/trailofbits/necessist) - iteratively removes statements and method calls from tests and then runs them. If a test passes with a statement or method call removed, it could indicate a problem in the test. Or worse, it could indicate a problem in the code being tested.
-- [Semgrep smart-contracts - DeFi](https://github.com/Decurity/semgrep-smart-contracts) - *Need/Want more info on this
-- [Slither](https://github.com/crytic/slither)
-      - [Slither wiki](https://github.com/crytic/slither/wiki/Usage) // [Foundry Slither](https://book.getfoundry.sh/config/static-analyzers#slither) // [Issues](https://github.com/crytic/slither/issues/1121) // [Blog overview](https://blog.trailofbits.com/2019/05/27/slither-the-leading-static-analyzer-for-smart-contracts/) // [Immunefi video](https://www.youtube.com/watch?v=gRJvvXOF_3c)   
-      - `slither path/contract.sol --solc-remaps "@=node_module@"` -  to fix   
-      - [Printers](https://github.com/crytic/slither/wiki/Printer-Documentation)      
-      -  `--print human-summary` `--triage-mode` `--print function-id` `slither . --print cfg` (control flow graph)   
-      - `--print function-summary`   
-      -  `--print constructor-calls` `--print modifiers` `--print variable-order` (slots and offset)   
-      -  `slither-check-erc path ContractName --solc-remaps @=node_modules/@`   
-      -  `slither-find-paths file.sol [contract.function targets]`   
-      - [slither-read-storage](https://github.com/crytic/slither/blob/master/slither/tools/read_storage/README.md)      
-- [Rattle](https://github.com/crytic/rattle) - binary static analysis   
-- [Wagmi](https://wagmi.sh/)   
-- [Web3.js](https://web3js.org/#/)
-- [Web3Bugs](https://github.com/ZhangZhuoSJTU/Web3Bugs)
-
-[Metadock](https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo/related) - extends Etherscan; "Proxy Upgrade Log"   
-[Visualizer tool](https://github.com/naddison36/sol2uml)   
-
---- 
 
 ### Contract Deployment
 - `forge build --vv` - verbose compiling
@@ -594,6 +594,7 @@ Nomi Prins - [Collusion: How Central Bankers Rigged the World](https://www.amazo
 [Metamask](https://metamask.io/)   
 [Loopring](https://wallet.loopring.io/)   
 [Ledger](https://www.ledger.com/)   
+[Phantom]
 
 -----
 ## Teams to Connect With  
@@ -603,8 +604,7 @@ Nomi Prins - [Collusion: How Central Bankers Rigged the World](https://www.amazo
 - [Cyfrin](https://www.cyfrin.io/)   
 - [Secureum](https://www.secureum.xyz/)      
 - [Spearbit](https://spearbit.com/)  
-- [Trail of Bits](https://www.trailofbits.com/) 
-- [YAcademy](https://yacademy.dev/about/)      
+- [Trail of Bits](https://www.trailofbits.com/)  
 - [Zellic](https://www.zellic.io/)
 
 -----
@@ -626,9 +626,7 @@ Uniswap V3 [whitepaper](https://uniswap.org/whitepaper-v3.pdf)
 [Secure Names for Bit-Strings](https://nakamotoinstitute.org/static/docs/secure-names-bit-strings.pdf)      
 [Anonymous Payments Lecture](https://www.youtube.com/watch?v=Z0s4W3UBxM8)
 
-[Academic Smart_Contract_Papers](https://github.com/hzysvilla/Academic_Smart_Contract_Papers)   
-
-[More Resources](https://github.com/PatrickAlphaC/Blockchain-Development-Resources#youtube-channels) from Patrick Collins   
+[Academic Smart_Contract_Papers](https://github.com/hzysvilla/Academic_Smart_Contract_Papers)    
 
 ----- 
   
@@ -893,7 +891,7 @@ NFT's and Atomic NFT's [lecture](https://youtu.be/tVyS3Ut_1eE?t=2535) with Ari J
 
 `meta-transactions` - a transaction without the end-user directly paying for gas: users sign transactions off-chain, and a third-party service called a relayer submits the transaction to the blockchain, paying gas on the user's behalf    
 
-`MEV` - maximal (formerly miner) extractable value; referred to as an "invisible tax" that validators/block proposers can collect from users – essentially, the maximum value a validator can extract from moving around transactions when producing a block on a blockchain network; [video](https://youtu.be/u4sV-Btg1Ag)   
+`MEV` - maximal (formerly miner) extractable value; referred to as an "invisible tax" that can be extracted from block production. In modern Ethereum (post-Merge), MEV extraction involves **Proposer-Builder Separation**: specialized **block builders** construct optimal blocks to maximize MEV, while **validators** (proposers) select and propose the most profitable block. This separates the complex work of MEV extraction from validation duties, allowing validators to earn MEV rewards without sophisticated infrastructure. See [MEV section](#mev) for details; [video](https://youtu.be/u4sV-Btg1Ag)   
 
 `mocking`- creating objects that simulate the behaviour of real objects; primarily used in unit testing; [Patrick Collins mocks](https://youtu.be/sas02qSFZ74?t=2553)    
  
