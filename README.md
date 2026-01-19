@@ -1,35 +1,72 @@
 ## Smart Contract Resources
 
-A curated set of EVM resources and collection of vulnerable contracts.
+A comprehensive, curated collection of EVM development resources, security tools, DeFi protocols, and vulnerable contract examples for learning and auditing.
 
-### Contents
+---
 
-- [Core references](#core-references)
-- [Security and exploits](#security-and-exploits)
-- [Tooling](#tooling)
+### 📚 Table of Contents
 
-### Core references
+**Getting Started**
+- [Core References](#core-references) - essential documentation and learning materials
+- [Tooling](#tooling) - development environments, static analysis, fuzzing tools
 
-- [Mastering Ethereum (2nd Edition)](https://masteringethereum.xyz/)
-- Solidity [documentation](https://docs.soliditylang.org/en/latest/) and [cheatsheet](https://docs.soliditylang.org/en/latest/cheatsheet.html)
-- [Ethereum developer docs](https://ethereum.org/en/developers/docs/)
-- [OpenZeppelin Contracts docs](https://docs.openzeppelin.com/contracts/)
-- [Solidity by Example](https://solidity-by-example.org/)
+**Gas & EVM Internals**
+- [Opcodes | Gas Optimization | Storage and Memory](#opcodes--gas-optimization--storage-and-memory) - gas optimization strategies and EVM limits
 
-- **News**
-  - [Blockthreat Intelligence](https://newsletter.blockthreat.io/)
-  - [Rekt](https://rekt.news/) (incident writeups)
-  - [DeFiLlama hacks database](https://defillama.com/hacks)
-  - [Web3 is going great](https://web3isgoinggreat.com/)
+**Transactions & Signatures**
+- [Transactions and Signatures](#transactions-and-signatures) - transaction types, ECDSA components
 
-  - Matt Levine: [Bloomberg](https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine) Opinion Columnist per [Dan Robinson](https://youtu.be/Lz7g0ny99jk?t=3183) 
-   
-[Bankless](http://podcast.banklesshq.com/)   
-[Unchained](https://unchainedcrypto.com/podcasts/)   
-[Scraping Bits](https://rss.com/podcasts/scrapingbits/)   
+**Security & Auditing**
+- [Hacks and Security](#hacks-and-security) - attack vectors, audit resources, testing strategies
+- [Testing & Verification](#testing--verification) - fuzzing, invariants, formal verification
+- [Bug Bounty Platforms](#bug-bounty-platforms) - Code4rena, Immunefi, Sherlock, etc.
+- [AI-Assisted Security & Development](#ai-assisted-security--development) - AI tools, MCP servers
 
-  - [RareSkills GitHub](https://github.com/RareSkills)
-  - [Rareskills 140 interview questions for Ethereum Developers](https://www.rareskills.io/post/solidity-interview-questions)    
+**DeFi Ecosystem**
+- [DeFi](#defi-decentralized-finance) - DEXs, lending protocols, derivatives
+- [Modern DeFi Trends](#modern-defi-trends-2025-2026) - RWA, restaking, intents, account abstraction
+- [Stablecoins](#stablecoins) - types, risks, oracle security
+- [MEV](#mev) - maximal extractable value, PBS architecture, protection strategies
+
+**Advanced Topics**
+- [Finance, Markets & Security Reading](#finance-markets--security-reading) - books on Web3 security and TradFi parallels
+- [Tokens](#tokens) - ERC standards (20, 721, 1155, 4626, etc.)
+- [Dictionary of Key Terms](#dictionary-of-key-terms-solidity) - comprehensive Solidity/DeFi glossary
+
+**Infrastructure & Career**
+- [Contract Deployment](#contract-deployment) - deployment commands
+- [Wallets](#wallets) - browser, mobile, hardware, and smart contract wallets
+- [Teams to Connect With](#teams-to-connect-with) - security firms and dev shops
+- [Jobs](#jobs) - job boards for Web3 opportunities
+
+---
+
+### Core References
+
+**Essential Documentation:**
+- [Mastering Ethereum (2nd Edition)](https://masteringethereum.xyz/) - comprehensive Ethereum guide
+- Solidity [documentation](https://docs.soliditylang.org/en/latest/) and [cheatsheet](https://docs.soliditylang.org/en/latest/cheatsheet.html) - official language docs
+- [Ethereum developer docs](https://ethereum.org/en/developers/docs/) - network and protocol specs
+- [OpenZeppelin Contracts docs](https://docs.openzeppelin.com/contracts/) - secure contract implementations
+- [Solidity by Example](https://solidity-by-example.org/) - hands-on code examples
+
+**Learning Resources:**
+- [RareSkills GitHub](https://github.com/RareSkills) - advanced security and gas optimization content
+- [RareSkills 140 Ethereum Developer Interview Questions](https://www.rareskills.io/post/solidity-interview-questions) - comprehensive interview prep
+
+**News & Incident Tracking:**
+- [Blockthreat Intelligence](https://newsletter.blockthreat.io/) - weekly security updates
+- [Rekt](https://rekt.news/) - DeFi hack post-mortems and analysis
+- [DeFiLlama Hacks Database](https://defillama.com/hacks) - comprehensive hack tracker with TVL
+- [Web3 is Going Great](https://web3isgoinggreat.com/) - critical timeline of crypto incidents
+
+**Opinion & Analysis:**
+- [Matt Levine](https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine) (Bloomberg Opinion) - finance and markets columnist, [recommended by Dan Robinson](https://youtu.be/Lz7g0ny99jk?t=3183)
+
+**Podcasts:**
+- [Bankless](http://podcast.banklesshq.com/) - Ethereum and DeFi news and interviews
+- [Unchained](https://unchainedcrypto.com/podcasts/) - crypto news and deep dives with Laura Shin
+- [Scraping Bits](https://rss.com/podcasts/scrapingbits/) - technical security and development discussions    
 
 ### Tooling
 
@@ -45,7 +82,6 @@ A curated set of EVM resources and collection of vulnerable contracts.
 - [Echidna](https://github.com/crytic/echidna) - property-based fuzzer (Haskell-based). See: [fuzzing guide](https://bushido-sec.com/index.php/2023/07/27/fuzzing-smart-contracts/)
 - [Medusa](https://github.com/crytic/medusa) - coverage-guided fuzzer (Go-based, faster than Echidna with parallel workers)
 - [Mythril](https://github.com/ConsenSys/mythril) - symbolic execution, SMT solving, and taint analysis. See also: [MythX](https://github.com/muellerberndt/awesome-mythx-smart-contract-security-tools)
-
 
 **Libraries & SDKs:**
 - [Ethers.js](https://docs.ethers.org/v5/single-page/) - Ethereum library and wallet implementation
@@ -78,6 +114,8 @@ A curated set of EVM resources and collection of vulnerable contracts.
 - [Storage vs Memory explained](https://soliditytips.com/articles/solidity-data-location-storage-memory/)   
 - [Gas-optimization course](https://www.udemy.com/course/advanced-solidity-understanding-and-optimizing-gas-costs/?referralCode=C4684D6872713525E349) by Jeffrey Scholz ([RareSkills](https://github.com/RareSkills))   
 - Foundry Debugger [tutorial](https://youtu.be/sas02qSFZ74?list=PL4Rj_WH6yLgWe7TxankiqkrkVKXIwOP42&t=25270)   
+
+
 [Play with opcodes](https://www.evm.codes/playground)      
 
 **Recent Opcode Additions:**
@@ -215,33 +253,10 @@ These components allow the network to verify the transaction was signed by the s
 
 - [Seal-911](https://github.com/security-alliance/seal-911)
   
-- [Reentrancy Attacks](https://github.com/pcaversaccio/reentrancy-attacks) - relies on a certain order of operations; a reentrant procedure can be interrupted in the middle of its execution. Following the interruption, the procedure can be called again (“reentered”) before its previous invocations complete execution; exploits “fallback”
-     - `single-function`
-     - `cross-function` 
-     - `cross-contract:` swaps; creator of swap enters into manager contract getting both end of swaps
-     - `cross-chain`
-     - `read-Only` - a contract is re-entered during a call, but the reentrant call only reads data and doesn't modify state. Even if no state changes, it can still be a vulnerability depending on how the read data is used afterward.   
-    
-- [Front Running](https://www.youtube.com/watch?v=uElOqz-Htos): `batch overfow` - `gas price pumping` - `prioritized mining`   
-   - [Sandwich Attack](https://www.youtube.com/watch?v=26lWg6UIrKw) - a form of front-running and back-running simultaneously, with the original pending transaction sandwiched in between
-   - [Etherscan Pending Transactions](https://etherscan.io/txsPending)   
-- Flash loans - [pump and arbitrage attack](https://www.youtube.com/watch?v=NifGKCiiX3E&t=779s)
-- [Double spending](https://www.investopedia.com/terms/d/doublespending.asp) - 51% is one of the most commonly cited attacks   
-- Denial of service (DoS; DDoS attack)   
-- Oracle Manipulation - [Awesome-oracle-manipulation](https://github.com/0xcacti/awesome-oracle-manipulation) 
-  	- [Chainlink Oracle Security Considerations](https://medium.com/cyfrin/chainlink-oracle-defi-attacks-93b6cb6541bf#87fc)   
-- [Replay attack](https://learn.bybit.com/blockchain/what-is-a-replay-attack/) - a replay of a transaction primarily taken place while a hard fork is being implemented; a delay or intercept data transmission that occurs over a network. This information can then be processed and repeated numerous times to effectively duplicate transactions   
-  
-
 -----   
 
 ### Audits
-
-[Weird ERC20](https://github.com/d-xo/weird-erc20#revert-on-zero-value-transfers)  
-[The Solcurity Standard](https://github.com/transmissions11/solcurity) audit checklist    
-
-[Daily Warden](https://www.dailywarden.com/) - active and upcoming security contests   
-
+  
 - `timeboxing` - allocate a fixed, maximum amount of time and step out of the rabbit hole; move on. 
 
 Modern auditing checklist (concise):
@@ -260,87 +275,208 @@ Most auditor discussions are on Twitter.
 - [Tincho](https://www.youtube.com/watch?v=A-T9F0anN1E&list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&index=5)
 - [Pashov](https://twitter.com/pashovkrum) and [Pashov’s audits](https://github.com/pashov/audits/tree/master/solo)   
 - [Andy Li's road map](https://youtu.be/-469Gcye-ZE)
-- [0kage.eth road map](https://twitter.com/0kage_eth/status/1640795980101742592?s=46&t=ezf5V_RX8d4d4zdIpUUrWQ)   
-- Patrick Collins - [How to Audit a Smart Contract](https://www.youtube.com/watch?v=TmZ8gH-toX0) and Lesson 13: Aave liquidationCall()      
+- [0kage.eth road map](https://twitter.com/0kage_eth/status/1640795980101742592?s=46&t=ezf5V_RX8d4d4zdIpUUrWQ)        
 - [Owen Thurm's Channel](https://www.youtube.com/@0xOwenThurm)   
 - [Dacian's blog](https://dacian.me/smart-contract-auditor-portfolio)
-- [Volodya's Blog](https://0xvolodya.hashnode.dev/how-i-earned-25000-auditing-and-ranked-1-on-60-day-leaderboard)
 - [Addison Spiegel](https://addison.is/posts/curve-whitehat) Curve Finance White Hat
   - [Etherscan transaction](https://etherscan.io/tx/0x006763dff653ecddfd3681181a29e7e6d6c2aaa7bafb27fe1376f3f7ce367c1e)
  
 
-1. Find a project, search for bugs
-2. Find a bug, search for projects
-3. Be fast with new updates
-4. Know tools
+**Auditing Strategy:**
+1. **Find a project, search for bugs** - systematic review approach
+2. **Find a bug, search for projects** - pattern-based hunting across codebases
+3. **Be fast with new updates** - track latest EIPs, compiler versions, and protocol upgrades
+4. **Know your tools** - master static analyzers, fuzzers, and formal verification
 
-### Bug Bounty
- - [Code4rena](https://code4rena.com/) - [submission policy](https://docs.code4rena.com/roles/wardens/submission-policy)
- - [Cantina](https://cantina.xyz/competitions)
- - [CodeHawks](https://www.codehawks.com/)
- - [Immunefi](https://immunefi.com/)
- - [Remedy](https://hunt.r.xyz/programs)
- - [Sherlock](https://www.sherlock.xyz/)
+-----
 
------ 
+### Testing & Verification
 
-#### Fuzzing
+#### Fuzzing (Dynamic Testing)
 
-`Fuzzing` - to identify fuzzable functions to successfully fuzz a target, one must comprehend how it functions, establish a basic threat model and decide how to test its security.  
-	- `stateless fuzzing` where the state of the previous run is discarded for every new run   
-	- `stateful fuzzing` fuzzing where final state of previous run is the starting state of the next run   
-   - intro to fuzz tests [Lesson 7](https://youtu.be/sas02qSFZ74?t=281c)
-   - [Trail of bits Youtube Workshop](https://www.youtube.com/playlist?list=PLciHOL_J7Iwqdja9UH4ZzE8dP1IxtsBXIhttps://www.youtube.com/watch?v=83q14K-WNKM)  
-   - Debugger [7:01:10](https://youtu.be/sas02qSFZ74?list=PL4Rj_WH6yLgWe7TxankiqkrkVKXIwOP42&t=25270)
-   - Handler based testing [3:27:25](https://youtu.be/wUjYK5gwNZs?t=12443)  - depth = number of calls in a run
-   - [Makefile](https://github.com/the-vegetarian-vampire/Solidity-Smart-Contract-Resources/blob/main/Smart%20Contracts/Makefile)
-   - [Hoax](https://youtu.be/sas02qSFZ74?t=5248)   
-   - [txGasPrice](https://youtu.be/sas02qSFZ74?t=5753)
-   - [Fuzzing Uniswap V4](https://www.youtube.com/live/CwvD8dmTsRc)
-	- Assets vs liabilities, end to end (invariant) at any point A ≥ L (e.g. total value held by the protocol must cover user obligations).
+**Overview:** Automated testing technique that generates randomized inputs to discover unexpected behaviors, edge cases, and vulnerabilities.
 
-`corpus` refers to a collection of input data samples or test cases used to evaluate and test the behavior of a program
+**Fuzzing Types:**
+- **Stateless Fuzzing** - each run starts with fresh state, tests individual functions in isolation
+- **Stateful Fuzzing** - maintains state across runs, tests sequences of function calls and state transitions
+- **Invariant-Based Fuzzing** - continuously validates system invariants across random operation sequences
 
-Types of fuzzing:       
-- Cross-Function Fuzzing        
-- Price Feed Manipulation via Fuzzing    
-- Storage Slot Packing Fuzzing    
-- Decimal Overflow Fuzzing    
-- Boundary Condition    
+**Modern Fuzzing Tools:**
+- **[Echidna](https://github.com/crytic/echidna)** - property-based fuzzer (Haskell-based), advanced corpus management
+- **[Medusa](https://github.com/crytic/medusa)** - coverage-guided fuzzer (Go-based), faster with parallel workers
+- **Foundry Fuzz** - built-in fuzzing with `forge test`, configurable via `foundry.toml`
 
-In foundry.toml you can toggle `via_ir`. Use `via_ir = true` for modern optimizations; if you hit IR-specific issues, temporarily disable it. See [Solidity IR notes](https://docs.soliditylang.org/en/latest/ir-breaking-changes.html).   
-`Cloc` - will count lines of code: once installed: `cloc .`
+**Fuzzing Patterns to Test:**
+- **Cross-Function Fuzzing** - test interactions between multiple functions
+- **Price Feed Manipulation** - oracle manipulation via flash loans
+- **Storage Slot Packing** - boundary conditions in packed storage
+- **Decimal/Precision Loss** - rounding errors in financial calculations
+- **Access Control Bypass** - privilege escalation attempts
+- **Reentrancy Chains** - complex reentrancy across multiple contracts
 
-[Exploiting Precision Loss via Fuzz Testing Article](https://dacian.me/exploiting-precision-loss-via-fuzz-testing)    
+**Key Concepts:**
+- **Corpus** - collection of test inputs that achieved new coverage, reused across runs
+- **Coverage** - percentage of code paths executed by fuzzer
+- **Depth** - number of function calls in a single fuzzing run (handler-based testing)
+- **Shrinking** - minimizing failing inputs to simplest reproducible case
 
- #### Invariant Testing
- 1. Function Level Invariant
-    - Doesn't rely on system OR could be stateless
-    - Can be tested in isolation: Associative property of addition OR depositing tokens in a contract
- 2. Syetem Level Invariant
-    - Relies on deployment of a large part or entire system
-    - Usually stateful: User's balance < total supply OR yield is monotonically increasing
+**Foundry Fuzzing Configuration:**
+```toml
+[fuzz]
+runs = 256              # number of scenarios per test
+max_test_rejects = 65536
+seed = '0x1'
+dictionary_weight = 40
+include_storage = true
+include_push_bytes = true
+```
 
- - Patrick Collins [3:23:40](https://youtu.be/wUjYK5gwNZs?t=12220)   
- - [Rareskills walkthrough](https://www.rareskills.io/post/invariant-testing-solidity)   
+**Learning Resources:**
+- [Patrick Collins Fuzzing Intro](https://youtu.be/sas02qSFZ74?t=281c) (Lesson 7)
+- [Trail of Bits Fuzzing Workshop](https://www.youtube.com/playlist?list=PLciHOL_J7Iwqdja9UH4ZzE8dP1IxtsBXI)
+- [Handler-Based Testing](https://youtu.be/wUjYK5gwNZs?t=12443) - depth and state management
+- [Fuzzing Uniswap V4](https://www.youtube.com/live/CwvD8dmTsRc) - real-world protocol fuzzing
+- [Exploiting Precision Loss via Fuzzing](https://dacian.me/exploiting-precision-loss-via-fuzz-testing) - Dacian's guide
+- [Foundry Debugger](https://youtu.be/sas02qSFZ74?list=PL4Rj_WH6yLgWe7TxankiqkrkVKXIwOP42&t=25270)
 
-[Formal Verifcation](https://www.youtube.com/watch?v=izpoxfTSaFs&t=691s) - proving or disproving the validity of a system using a mathematical model
-- symbolic execution - explore different execution paths
-- `solc --model-checker-engine chc --model-checker-targets overflow contract.sol`
-- smtChecker - built into Solidity
+**Foundry Cheatcodes for Testing:**
+- [`hoax`](https://youtu.be/sas02qSFZ74?t=5248) - prank + deal in one call
+- [`txGasPrice`](https://youtu.be/sas02qSFZ74?t=5753) - set transaction gas price
+- `vm.assume()` - add constraints to fuzz inputs
+- `vm.expectRevert()` - test failure conditions
 
-[CEI](https://fravoll.github.io/solidity-patterns/checks_effects_interactions.html) - Checks Effects Interactions 
-Arrange Act and Assert   
+---
 
-Test types: [28:43](https://youtu.be/sas02qSFZ74?list=PL4Rj_WH6yLgWe7TxankiqkrkVKXIwOP42&t=1723) - Unit//Integration//Forked//Staging   
-     - Using modifiers [1:21:05](https://youtu.be/sas02qSFZ74?list=PL4Rj_WH6yLgWe7TxankiqkrkVKXIwOP42&t=4865)   
+#### Invariant Testing (Property-Based Testing)
 
-`--no-commit` flag tool will simulate the transaction without committing any changes to the blockchain. This can be useful for testing how a contract will behave when certain functions are called, without having to spend gas to actually perform the transaction on the network.   
+**Invariants** - properties that should ALWAYS hold true, regardless of state or operations performed.
 
-`mutation testing` is a type of software testing where small changes (mutations) are deliberately introduced into the source code at a single point in time. The purpose is to validate the quality of the existing test cases, ensuring that they are robust enough to detect the changes. Changes that result in test failures indicate adequate test coverage, while changes that do not result in test failures indicate gaps in test coverage. Although mutation testing is a slow process, it allows auditors to focus their review on areas of the codebase that are most likely to contain latent bugs, and it allows developers to identify and add missing tests. See [Necessist](https://github.com/trailofbits/necessist#overview)    
+**Two Types:**
 
-[Trail of Bits Automated Testing](https://appsec.guide/)    
-Echidna uses more advanced techniques like generating random transactions with random inputs and also keeps track of those transactions to achieve high coverage. On the other hand, Foundry focuses on generating random inputs for your test functions and has support for excluding certain values.   
+**1. Function-Level Invariants**
+- Don't rely on complex system state
+- Can be tested in isolation
+- Examples:
+  - Associative property of addition: `(a + b) + c == a + (b + c)`
+  - Token balance after deposit: `balanceAfter == balanceBefore + depositAmount`
+  - ERC20 total supply: `sum(all balances) == totalSupply`
+
+**2. System-Level Invariants**
+- Require deployment of entire system or large subsystems
+- Usually stateful and test cross-contract interactions
+- Examples:
+  - **Assets ≥ Liabilities**: Protocol's total value ≥ user obligations
+  - **Monotonic Yield**: Yield-bearing token exchange rate only increases
+  - **Solvency**: `totalBorrows ≤ totalCollateral * LTV`
+  - **Conservation of Value**: Tokens in + tokens out = 0 (no creation/destruction)
+
+**Common DeFi Invariants:**
+```solidity
+// Lending protocol
+assert(totalAssets >= totalBorrows);
+assert(utilizationRate <= 100%);
+
+// AMM
+assert(k == reserveA * reserveB); // constant product
+assert(totalSupply > 0 || (reserveA == 0 && reserveB == 0));
+
+// Staking
+assert(totalShares == 0 || rewardPerShare >= lastRewardPerShare);
+assert(userStaked <= totalStaked);
+```
+
+**Resources:**
+- [Patrick Collins Invariant Testing](https://youtu.be/wUjYK5gwNZs?t=12220)
+- [RareSkills Invariant Testing Guide](https://www.rareskills.io/post/invariant-testing-solidity)
+- [Foundry Invariant Testing Docs](https://book.getfoundry.sh/forge/invariant-testing)
+
+---
+
+#### Formal Verification (Mathematical Proofs)
+
+**Overview:** Proving or disproving system correctness using mathematical models and symbolic execution.
+
+**Tools & Techniques:**
+
+**1. Solidity SMTChecker (Built-in)**
+```bash
+solc --model-checker-engine chc \
+     --model-checker-targets overflow,underflow,divByZero \
+     Contract.sol
+```
+
+**2. Symbolic Execution**
+- Explores all possible execution paths
+- Tools: [Manticore](https://github.com/trailofbits/manticore), [Mythril](https://github.com/ConsenSys/mythril)
+
+**3. K Framework**
+- Formal semantics for EVM
+- Used by Runtime Verification for critical protocols
+
+**4. Certora Prover**
+- Commercial tool for formal verification
+- CVL (Certora Verification Language) for specs
+
+**Resources:**
+- [Formal Verification Introduction](https://www.youtube.com/watch?v=izpoxfTSaFs&t=691s)
+- [Certora Tutorials](https://www.certora.com/tutorials)
+
+---
+
+#### Mutation Testing
+
+**Purpose:** Validate test quality by introducing deliberate bugs (mutations) to see if tests catch them.
+
+**How it Works:**
+1. Modify source code slightly (e.g., change `<` to `<=`)
+2. Run test suite
+3. If tests pass → gap in test coverage
+4. If tests fail → tests adequately protect against this bug type
+
+**Benefits:**
+- Identify weak or missing tests
+- Focus auditor attention on under-tested areas
+- Improve test suite effectiveness
+
+**Tool:** [Necessist](https://github.com/trailofbits/necessist) - automated mutation testing for Rust and Solidity
+
+---
+
+#### Test Types & Best Practices
+
+**Test Hierarchy:**
+1. **Unit Tests** - test individual functions in isolation
+2. **Integration Tests** - test interactions between contracts
+3. **Fork Tests** - test against mainnet state (`forge test --fork-url $RPC_URL`)
+4. **Staging Tests** - test on testnets before mainnet
+
+**Best Practices:**
+- **[CEI Pattern](https://fravoll.github.io/solidity-patterns/checks_effects_interactions.html)** (Checks-Effects-Interactions) - prevent reentrancy
+- **Arrange-Act-Assert** - structure tests clearly
+- **Use Modifiers** for [test setup](https://youtu.be/sas02qSFZ74?list=PL4Rj_WH6yLgWe7TxankiqkrkVKXIwOP42&t=4865)
+- **Test Negative Cases** - ensure functions revert when they should
+- **Simulate Transactions** - `--no-commit` flag simulates without state changes
+
+**Code Coverage:**
+- Use `forge coverage` for line/branch coverage
+- Use `cloc .` to count lines of code
+- Aim for >90% coverage, but coverage ≠ security
+
+**Resources:**
+- [Patrick Collins Testing Guide](https://youtu.be/sas02qSFZ74?list=PL4Rj_WH6yLgWe7TxankiqkrkVKXIwOP42&t=1723)
+- [Trail of Bits Automated Testing](https://appsec.guide/)
+- [Testing Best Practices](https://book.getfoundry.sh/forge/tests)
+
+---
+
+### Bug Bounty Platforms
+- [Daily Warden](https://www.dailywarden.com/) - active and upcoming security contests
+- [Code4rena](https://code4rena.com/) - competitive audits ([submission policy](https://docs.code4rena.com/roles/wardens/submission-policy))
+- [Cantina](https://cantina.xyz/competitions) - private and public competitions
+- [CodeHawks](https://www.codehawks.com/) - Cyfrin's audit platform
+- [Immunefi](https://immunefi.com/) - largest bug bounty platform for DeFi
+- [Remedy](https://hunt.r.xyz/programs) - on-chain bug bounties
+- [Sherlock](https://www.sherlock.xyz/) - competitive audits with coverage pool   
 
 
 -----   
@@ -362,77 +498,201 @@ Echidna uses more advanced techniques like generating random transactions with r
 
 -----   
 
-## Defi
-Key concepts: [`AMM`](#amm) · [`TWAPs`](#twaps-or-time-weighted-average-prices) · [`JIT liquidity`](#jit-just-in-time-liquidity) · [`RFQ`](#rfq-request-for-quote) · [`DLOB`](#dlob-decentralized-limit-order-book) · [`perpetual futures`](#perpetual-futures-perp) · [`observation cardinality`](#observation-cardinality) · [`Slots and epochs`](#slots-and-epochs-ethereum-pos) · [`MEV`](#mev)
-[Layer2 Beat](https://l2beat.com/scaling/tvl)   
-[Defi Llama](https://defillama.com/)    
+## DeFi (Decentralized Finance)
 
-[Eigenphi](https://eigenphi.io/) - tracking data   
-[DeFi vs TradeFi](https://coinstove.com/learn/defi-vs-tradfi/)   
-Three-part article on Medium:
-- [DeFi Lending Concepts Part 1: Lending and Borrowing](https://blog.smlxl.io/defi-lending-concepts-part-1-lending-and-borrowing-f646d6a08dd7)
-- [DeFi Lending Concepts Part 2: Liquidations](https://blog.smlxl.io/defi-lending-concepts-part-2-liquidations-7f0f0ffec96c)
-- [DeFi Lending Concepts Part 3: Rewards](https://medium.com/smlxl/defi-lending-concepts-part-3-rewards-2fc87e78e9c4)   
+**Key concepts:** [`AMM`](#amm) · [`TWAPs`](#twaps-or-time-weighted-average-prices) · [`JIT liquidity`](#jit-just-in-time-liquidity) · [`RFQ`](#rfq-request-for-quote) · [`DLOB`](#dlob-decentralized-limit-order-book) · [`perpetual futures`](#perpetual-futures-perp) · [`observation cardinality`](#observation-cardinality) · [`Slots and epochs`](#slots-and-epochs-ethereum-pos) · [`MEV`](#mev)
 
-[Teach Yourself Crypto](https://teachyourselfcrypto.com/#ftoc-module-4-decentralized-finance-defi) good links; also [Khan Acad.](https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking/banking-and-money/v/banking-1)   
+### DeFi Analytics & Tracking
+- [DeFi Llama](https://defillama.com/) - comprehensive TVL and protocol analytics
+- [L2Beat](https://l2beat.com/scaling/tvl) - Layer 2 ecosystem tracking and risk analysis
+- [Eigenphi](https://eigenphi.io/) - MEV and on-chain data analytics
+- [DeFi vs TradeFi explainer](https://coinstove.com/learn/defi-vs-tradfi/)
 
+### Learning Resources
+**DeFi Lending Deep Dives** (3-part series):
+- [Part 1: Lending and Borrowing](https://blog.smlxl.io/defi-lending-concepts-part-1-lending-and-borrowing-f646d6a08dd7)
+- [Part 2: Liquidations](https://blog.smlxl.io/defi-lending-concepts-part-2-liquidations-7f0f0ffec96c)
+- [Part 3: Rewards](https://medium.com/smlxl/defi-lending-concepts-part-3-rewards-2fc87e78e9c4)
 
-|Exchanges | Video| Documentaion | Supported Assets | LP Token |Details | 
-| ------------- | ------------- | ------------- | ------------- | ------------- |------------- |
-| [Uniswap](https://uniswap.org/)  | [video](https://www.youtube.com/watch?v=yiG82nHWpSc&t=15s)  | [docs](https://docs.uniswap.org/) | ETH & ERC20 |Yes (for bookeeping | Auto router or client side router//Trading fees 0.3% |
-| [Curve](https://resources.curve.fi/) | [video](https://www.youtube.com/watch?v=MqRfurKVM1A) | [docs](https://curve.readthedocs.io/index.html)  |  |
-| [Sushiswap](https://www.sushi.com/swap)  | [video](https://www.youtube.com/watch?v=NTYbVnENeVo) | [docs](https://github.com/sushiswap) |  |
-| [Balancer](https://balancer.fi/) | [video](https://www.youtube.com/watch?v=IX6rUhNC8uA) | [docs](https://docs.balancer.fi/) ||Yes (functional ERC Token)| weighted math; allows own ratios: liquidity bootstrapping pool (LBP); up to 8 assets|
-| [PancakeSwap](https://pancakeswap.finance/) | [video](https://www.youtube.com/watch?v=sr9AKeMa5tU) | [docs](https://docs.pancakeswap.finance/) | ||offers limit orders|
+- [Teach Yourself Crypto - DeFi Module](https://teachyourselfcrypto.com/#ftoc-module-4-decentralized-finance-defi)
+- [Khan Academy - Banking Fundamentals](https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking/banking-and-money/v/banking-1)
 
------ 
-|Lenders | Video| Documentaion | Details  |
-| ------------- | ------------- | ------------- | ------------- |
-| [Aave](https://aave.com/) | [video](https://www.youtube.com/watch?v=VXlI-uzhBX4) | [docs](https://docs.aave.com/hub/)  | Finnish for ghost, alludes to anonymity of transactions; [Aave Tesnet](https://staging.aave.com/) |
-| [Compound](https://compound.finance/) | [video](https://www.youtube.com/watch?v=sIIg2owOz3w) | [docs](https://docs.compound.finance/) |  |
+---
 
------ 
-Dex Aggregators - a service that brings together liquidity from different decentralized exchanges and market makers, helping users find the best price for a given trade
-   - [1inch](https://1inch.io/) - [video](https://www.youtube.com/watch?v=BpcP0n44Tf8)
-   - [Paraswap](https://www.paraswap.io/)
+### Decentralized Exchanges (DEXs)
 
-Derivatives exchange
-- [Synthetix](https://synthetix.io/)
-- [UMA](https://uma.xyz/)
+#### Major AMM DEXs
 
-Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)     
-[Bancor](https://bancor.network/)
+| Protocol | Chain(s) | Type | Key Features | Resources |
+|----------|----------|------|--------------|-----------|
+| **[Uniswap](https://uniswap.org/)** | Ethereum, L2s | AMM (V4: hooks) | Concentrated liquidity (V3+), flash swaps, TWAP oracles | [Docs](https://docs.uniswap.org/) · [Video](https://www.youtube.com/watch?v=yiG82nHWpSc) |
+| **[Curve](https://curve.fi/)** | Multi-chain | Stableswap AMM | Optimized for stables/like-assets, ve-token model, gauges | [Docs](https://curve.readthedocs.io/) · [Video](https://www.youtube.com/watch?v=MqRfurKVM1A) |
+| **[Balancer](https://balancer.fi/)** | Ethereum, L2s | Weighted pools | Up to 8 tokens per pool, custom ratios, LBPs | [Docs](https://docs.balancer.fi/) · [Video](https://www.youtube.com/watch?v=IX6rUhNC8uA) |
+| **[Aerodrome](https://aerodrome.finance/)** | Base | ve(3,3) | Velodrome fork on Base, vote-escrowed model | [Docs](https://docs.aerodrome.finance/) |
+| **[Velodrome](https://velodrome.finance/)** | Optimism | ve(3,3) | Vote-escrowed design, bribe marketplace | [Docs](https://docs.velodrome.finance/) |
+| **[PancakeSwap](https://pancakeswap.finance/)** | BSC, multi-chain | AMM + features | Limit orders, perpetuals, lottery, NFTs | [Docs](https://docs.pancakeswap.finance/) · [Video](https://www.youtube.com/watch?v=sr9AKeMa5tU) |
+| **[Trader Joe](https://traderjoexyz.com/)** | Avalanche, Arbitrum | Liquidity Book | Discretized liquidity bins, capital efficiency | [Docs](https://docs.traderjoexyz.com/) |
+| **[SushiSwap](https://www.sushi.com/)** | Multi-chain | AMM | Cross-chain DEX, concentrated liquidity (V3) | [Docs](https://dev.sushi.com/) · [Video](https://www.youtube.com/watch?v=NTYbVnENeVo) |
 
-`APY` - [annual percentage yield](https://www.investopedia.com/terms/a/apy.asp)     
-`LTV` - [Loan To Value](https://www.investopedia.com/terms/l/loantovalue.asp)  
-`LP` - liquidty providers   
-`LSTs` - liquid staking tokens   
-`LSDs` - liquid staking derivatives   
-`PnL` - profit and loss   
+#### Order Book DEXs
 
-`order book model` - an electronic list of buy and sell orders for a specific security or financial instrument organized by price level; lists the number of shares being bid on or offered at each price point, or market depth    
+| Protocol | Chain | Type | Key Features |
+|----------|-------|------|--------------|
+| **[dYdX V4](https://dydx.exchange/)** | Cosmos app-chain | Orderbook + perps | Fully decentralized orderbook, off-chain matching, on-chain settlement |
+| **[Vertex](https://vertexprotocol.com/)** | Arbitrum | Hybrid | Combines AMM + orderbook, integrated perps and spot |
+| **[Hyperliquid](https://hyperliquid.xyz/)** | Custom L1 | Orderbook + perps | High-performance L1 for trading, sub-second finality |
 
-`relayer` - a participant or node that facilitates off-chain matching of orders and assists with on-chain settlement, play a crucial role in decentralized exchange (DEX) protocols and Layer 2 scaling solutions; off-chain order books where they collect and match buy and sell orders from users. By keeping the order book off-chain, relayers can reduce the amount of data that needs to be stored on the blockchain, thereby lowering costs and increasing efficiency; submitting the matched orders to a smart contract that completes the trade on the blockchain itself; `enhance liquidity` and maybe some `compliance` with regulatory requirements.   
+#### DEX Aggregators
+Route trades across multiple DEXs to find best execution:
+- **[1inch](https://1inch.io/)** - pathfinder algorithm, limit orders, gas optimization ([video](https://www.youtube.com/watch?v=BpcP0n44Tf8))
+- **[Paraswap](https://www.paraswap.io/)** - multi-path routing, gas refunds
+- **[CoW Swap](https://cow.fi/)** - MEV-protected trading via batch auctions and solvers
+- **[Matcha](https://matcha.xyz/)** - 0x protocol aggregator
 
-`liquidity threshold` -  minimum amount of liquidity needed for market/protocol to function efficiently and avoid excessive price slippage 
-- All protocols define their thresholds as some function of collateral:debt (be it a ratio or a difference)
-- All protocols leave some room for governance to decide the value of per collateral risk parameter in response to changes in market conditions, as some assets are more volatile than others.
-- All protocols denominate their collateral and debt prices using an oracle, in a widely accepted currency (e.g., ETH, USD, DAI).
+---
 
-`bonding curve` is a mathematical curve that defines the relationship between the price and the supply of tokens. It is often used in automated market makers (AMMs).
-- **Reserve Pool**: Stores the ETH or base asset backing the token.
-- **Bonding Curve Formula**: Determines the token price based on supply.
-- **Mint and Burn Logic**:
-  - **Mint**: Tokens are minted when users buy them, increasing the total supply.
-  - **Burn**: Tokens are burned when users sell them, reducing the total supply.
+### Lending & Borrowing Protocols
 
-[Constant product automated makes maker](https://www.youtube.com/watch?v=QNPyFs8Wybk) (CPMMs) are based on the function `x*y=k` which establishes a range of prices for two tokens according to the available quantities (liquidity) of each token. When the supply of token X increases, the token supply of Y must decrease, and vice-versa, to maintain the constant product K.
+| Protocol | Type | Key Features | Resources |
+|----------|------|--------------|-----------|
+| **[Aave](https://aave.com/)** | Pool-based | Flash loans, isolation mode, eMode, GHO stablecoin, multi-chain | [Docs](https://docs.aave.com/) · [Video](https://www.youtube.com/watch?v=VXlI-uzhBX4) · [Testnet](https://staging.aave.com/) |
+| **[Compound](https://compound.finance/)** | Pool-based | Autonomous interest rates, cTokens, governance via COMP | [Docs](https://docs.compound.finance/) · [Video](https://www.youtube.com/watch?v=sIIg2owOz3w) |
+| **[Morpho](https://morpho.org/)** | Optimizer | Peer-to-peer matching on top of Aave/Compound, improved rates | [Docs](https://docs.morpho.org/) |
+| **[Euler](https://www.euler.finance/)** | Pool-based | Permissionless listing, reactive interest rates, multi-collateral | [Docs](https://docs.euler.finance/) |
+| **[Spark](https://spark.fi/)** | Pool-based | MakerDAO's native lending protocol, DAI-focused | [Docs](https://docs.spark.fi/) |
+| **[Radiant Capital](https://radiant.capital/)** | Omnichain | Cross-chain lending via LayerZero | [Docs](https://docs.radiant.capital/) |
+| **[Fluid](https://fluid.instadapp.io/)** | Smart collateral | Borrow against DeFi positions (Aave, Compound, etc.) | [Docs](https://docs.fluid.instadapp.io/) |
 
-`kink parameter` - the point in the interest rate model of Compound Finance where the interest rate stops increasing linearly and starts increasing polynomially.   
+---
 
-`Collateralized Debt Position` CDP - the unit of accounting used to track a specific borrowed debt amount, the respective collateral that backs it, as well as the ratio between the value of these two assets, known as the `Individual Collateral Ratio` (ICR).  
+### Liquid Staking & Restaking
 
-----
+| Protocol | Type | Token | Key Features |
+|----------|------|-------|--------------|
+| **[Lido](https://lido.fi/)** | Liquid staking | stETH | Largest ETH staking protocol, ~30% of staked ETH ([video](https://www.youtube.com/watch?v=VQ_uvak1JPw)) |
+| **[Rocket Pool](https://rocketpool.net/)** | Liquid staking | rETH | Decentralized node operators, trustless |
+| **[EigenLayer](https://www.eigenlayer.xyz/)** | Restaking | - | Restake ETH to secure other protocols (AVSs), additional yield |
+| **[Frax Ether](https://frax.finance/)** | Liquid staking | frxETH/sfrxETH | Dual-token system, higher yields via validators |
+
+---
+
+### Derivatives & Perpetuals
+
+| Protocol | Type | Key Features |
+|----------|------|--------------|
+| **[GMX](https://gmx.io/)** | Perps | Zero-slippage, up to 50x leverage, GLP liquidity pool |
+| **[dYdX](https://dydx.exchange/)** | Perps + spot | Decentralized orderbook, off-chain matching |
+| **[Synthetix](https://synthetix.io/)** | Synthetic assets | SNX collateral, infinite liquidity, cross-margin perps |
+| **[Gains Network](https://gains.trade/)** | Perps | Leverage up to 150x (forex/crypto), DAI collateral |
+| **[Hyperliquid](https://hyperliquid.xyz/)** | Perps | High-performance L1, HLP liquidity, sub-second settlement |
+
+**Other Derivatives:**
+- **[UMA](https://uma.xyz/)** - optimistic oracle for synthetic assets and insurance
+- **[Lyra](https://www.lyra.finance/)** - options trading (calls/puts)
+- **[Dopex](https://www.dopex.io/)** - decentralized options
+
+---
+
+### DeFi Key Terms & Concepts
+
+**Financial Metrics:**
+- **APY** - [Annual Percentage Yield](https://www.investopedia.com/terms/a/apy.asp) - includes compound interest
+- **APR** - Annual Percentage Rate - simple interest without compounding
+- **LTV** - [Loan To Value](https://www.investopedia.com/terms/l/loantovalue.asp) ratio - collateral value / loan value (e.g., 75% LTV = borrow $75 with $100 collateral)
+- **Health Factor** - ratio of collateral to debt; below 1.0 triggers liquidation (Aave term)
+- **Utilization Rate** - percentage of available liquidity currently borrowed
+- **PnL** - Profit and Loss
+
+**Participants:**
+- **LP** - Liquidity Providers - users who deposit assets into liquidity pools
+- **LST** - Liquid Staking Token (e.g., stETH, rETH) - represents staked ETH, remains liquid
+- **LRT** - Liquid Restaking Token (e.g., EigenLayer) - represents restaked assets
+
+**Trading Mechanisms:**
+- **Order Book Model** - electronic list of buy/sell orders organized by price level, showing market depth at each price point
+- **AMM** (Automated Market Maker) - algorithmic market maker using liquidity pools and pricing curves instead of order books
+- **CPMM** ([Constant Product Market Maker](https://www.youtube.com/watch?v=QNPyFs8Wybk)) - AMM using formula `x*y=k` (Uniswap V1/V2). When token X supply increases, token Y must decrease to maintain constant k
+- **CSMM** - Constant Sum Market Maker (`x+y=k`) - maintains 1:1 price, ideal for like-assets
+- **Stableswap** - Hybrid curve (Curve Finance) combining CPMM + CSMM for low-slippage stablecoin swaps
+- **Concentrated Liquidity** - LPs provide liquidity within custom price ranges (Uniswap V3+) for improved capital efficiency
+
+**Infrastructure:**
+- **Relayer** - off-chain participant that matches orders and facilitates on-chain settlement. Used in:
+  - DEX protocols (0x, CoW Protocol) for order matching
+  - L2 solutions for transaction batching
+  - Cross-chain bridges for message passing
+  - Benefits: reduced on-chain storage, lower costs, enhanced liquidity, potential regulatory compliance hooks
+
+**Risk Parameters:**
+- **Liquidity Threshold** - minimum liquidity needed for efficient market function and acceptable slippage
+  - Defined as collateral:debt ratio or difference
+  - Set via governance based on asset volatility
+  - Prices determined via oracles in reference currency (ETH, USD, DAI)
+- **Liquidation Threshold** - collateral:debt ratio that triggers liquidation (typically 80-85%)
+- **Liquidation Penalty** - fee charged during liquidation (typically 5-15%)
+- **Kink Parameter** - inflection point in interest rate models (Compound, Aave) where rates shift from linear to exponential growth, typically at optimal utilization (e.g., 80%)
+
+**Token Economics:**
+- **Bonding Curve** - mathematical function defining token price based on supply
+  - **Reserve Pool**: Holds backing assets (ETH, DAI, etc.)
+  - **Pricing Formula**: Determines price from current supply
+  - **Mint/Burn Logic**: 
+    - Mint: Buy tokens → supply ↑ → price ↑
+    - Burn: Sell tokens → supply ↓ → price ↓
+  - Used in: token launches, continuous organizations, automated market makers
+
+- **CDP (Collateralized Debt Position)** - accounting unit tracking:
+  - Borrowed debt amount
+  - Backing collateral value
+  - Individual Collateral Ratio (ICR) = collateral value / debt value
+  - Used in: MakerDAO, Liquity, other CDP-based protocols
+
+---
+
+### Modern DeFi Trends (2025-2026)
+
+**Real-World Asset (RWA) Tokenization:**
+- Tokenization of treasuries, bonds, real estate, commodities on-chain
+- Protocols: [Ondo Finance](https://ondo.finance/) (USDY - tokenized treasuries), [Centrifuge](https://centrifuge.io/), [Maple Finance](https://maple.finance/)
+- Regulatory clarity improving in US, EU, Singapore, UAE
+
+**Restaking & Shared Security:**
+- **[EigenLayer](https://www.eigenlayer.xyz/)** - restake ETH to secure additional protocols (AVSs)
+- **[Symbiotic](https://symbiotic.fi/)** - modular restaking protocol
+- **[Karak](https://karak.network/)** - multi-asset restaking
+- Enables protocols to leverage Ethereum's security without own validator sets
+
+**Intent-Based Architectures:**
+- Users express desired outcomes (e.g., "swap X for Y at best price within 5 min")
+- Solvers compete to fulfill intents via auctions
+- Protocols: [CoW Protocol](https://cow.fi/) (batch auctions), [UniswapX](https://uniswap.org/), [1inch Fusion](https://1inch.io/fusion/)
+- Benefits: MEV protection, better execution, gasless transactions
+
+**Account Abstraction (ERC-4337):**
+- Smart contract wallets with programmable logic
+- Features: social recovery, session keys, gas sponsorship, batched transactions
+- Implementations: [Safe](https://safe.global/), [Biconomy](https://www.biconomy.io/), [ZeroDev](https://zerodev.app/)
+- EIP-7702 (Pectra upgrade) enables EOAs to temporarily act like smart contracts
+
+**Cross-Chain & Interoperability:**
+- Unified liquidity and messaging across chains
+- Bridges: [LayerZero](https://layerzero.network/), [Axelar](https://axelar.network/), [Wormhole](https://wormhole.com/)
+- Aggregators: [LI.FI](https://li.fi/), [Socket](https://socket.tech/), [Squid](https://www.squidrouter.com/)
+- Focus on security post-bridge hacks (Ronin, Poly Network, Wormhole)
+
+**AI + DeFi:**
+- AI-powered portfolio management and trading strategies
+- Autonomous agents for governance participation
+- Automated security monitoring and anomaly detection
+- Natural language interfaces for DeFi interactions
+
+**Privacy & Compliance:**
+- Zero-knowledge proofs for private transactions
+- Selective disclosure for regulatory compliance
+- Protocols: [Aztec](https://aztec.network/), [Railgun](https://railgun.org/)
+- Balance between privacy rights and AML/KYC requirements
+
+---
 
 ### Uniswap Versions 1-4
 
@@ -478,11 +738,35 @@ Lido - [staking](https://www.youtube.com/watch?v=VQ_uvak1JPw)
 - Shortcut Functions: helper calls that leapfrog the protocol into complex or edge states to seed fuzzing contexts and accelerate coverage.
 - Canary Flaws: small, deliberately injected assertions that should never fire, used to alert you when a fuzzer has reached a dangerous or unexpected path.
 
+---
 
-[Slippage Attacks](https://dacian.me/defi-slippage-attacks)    
-[Build a liquidation bot](https://docs.aave.com/faq/liquidations) (docs)/[video](https://youtu.be/gyMwXuJrbJQ?list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&t=72020)    
-[Block stuffing](https://www.youtube.com/watch?v=3aPYkx7G7e0) (video) and [finding](https://github.com/code-423n4/2023-05-venus-findings/issues/525)   
-Aave [decoupling logic from state](https://twitter.com/RareSkills_io/status/1687116196343406594)    
+### DeFi Security & Attack Vectors
+
+**Common DeFi Attack Patterns:**
+- **[Slippage Attacks](https://dacian.me/defi-slippage-attacks)** - exploiting insufficient slippage protection in swaps
+- **[Block Stuffing](https://www.youtube.com/watch?v=3aPYkx7G7e0)** - filling blocks to prevent liquidation protection ([C4 finding example](https://github.com/code-423n4/2023-05-venus-findings/issues/525))
+- **Liquidation Attacks** - forcing undercollateralized positions for profit
+- **Price Oracle Manipulation** - flash loan attacks on spot price oracles (see [Stablecoins section](#stablecoins))
+- **Reentrancy in DeFi** - read-only reentrancy, cross-function reentrancy
+- **JIT Liquidity Sniping** - MEV extraction via just-in-time liquidity provision (Uniswap V3)
+
+**DeFi-Specific Testing:**
+- **Invariant Properties to Test:**
+  - Assets ≥ Liabilities at all times
+  - Total shares × price per share = total assets
+  - Sum of user balances ≤ total supply
+  - Interest accrual monotonically increases
+  - No unauthorized minting/burning
+
+- **Protocol Phase Testing:**
+  - Genesis: initialization parameters, admin setup
+  - Operation: deposits, withdrawals, swaps, liquidations
+  - Wind-down: emergency pause, graceful shutdown, fund recovery
+
+**Practical Resources:**
+- **[Build a Liquidation Bot](https://docs.aave.com/faq/liquidations)** ([video walkthrough](https://youtu.be/gyMwXuJrbJQ?list=PLQj6KMbjsRt7ft3xEtU8WhkK5-TsxDplY&t=72020))
+- **Aave Architecture** - [decoupling logic from state](https://twitter.com/RareSkills_io/status/1687116196343406594) for upgradability
+- **[DeFi Security Best Practices](https://consensys.github.io/smart-contract-best-practices/)** (ConsenSys)   
 
 
 ----- 
@@ -529,29 +813,90 @@ Per *[Mastering Ethereum (2nd Edition)](https://masteringethereum.xyz/)*, this a
 
 ### Stablecoins
 
-[Investopedia](https://www.investopedia.com/terms/s/stablecoin.asp) and [Whiteboard Crypto](https://www.youtube.com/watch?v=S7-rfvpEpJs)   
-Types   
-   1. Fiat based 
-   2. Crypto based
-   3. Algorithmic
+**Overview:** Digital assets designed to maintain a stable value relative to a reference asset (typically USD). [Investopedia guide](https://www.investopedia.com/terms/s/stablecoin.asp) | [Whiteboard Crypto explainer](https://www.youtube.com/watch?v=S7-rfvpEpJs)
 
-`soft peg` - value not strictly fixed but is instead kept within a certain range relative to another asset.
+#### Types of Stablecoins
 
-Dai - [MakerDAO](https://makerdao.com/en/)   
-[Frax](https://frax.finance/)   
+**1. Fiat-Collateralized** (Centralized reserves)
+- **[USDC](https://www.circle.com/en/usdc)** (Circle) - regulated, audited reserves, ERC-20 and multi-chain
+- **[USDT](https://tether.to/)** (Tether) - largest by market cap, multi-chain support, centralized
+- **[PYUSD](https://www.paypal.com/us/digital-wallet/manage-money/crypto/pyusd)** (PayPal USD) - regulated fiat-backed stablecoin, launched 2023
+- **[USDY](https://ondo.finance/)** (Ondo Finance) - yield-bearing tokenized US Treasuries
 
-[Stablecoin Trilemma](https://www.youtube.com/live/x-3PWe5dAQY?feature=share): scalable, decentralized, stable.
+**2. Crypto-Collateralized** (Over-collateralized)
+- **[DAI](https://makerdao.com/)** (MakerDAO/Sky) - decentralized, backed by crypto collateral (ETH, WBTC, etc.), managed via governance
+- **[FRAX](https://frax.finance/)** - hybrid fractional-algorithmic design with collateral backing
+- **[sUSD](https://www.synthetix.io/)** (Synthetix) - backed by SNX collateral
+- **[LUSD](https://www.liquity.org/)** (Liquity) - immutable, governance-free, backed by ETH
 
-Rebase — adding tokens   
-Debase — removing tokens    
+**3. Algorithmic** (No/minimal collateral - **HIGH RISK**)
+- **Terra UST** - **FAILED May 2022** ($40B collapse). Death spiral when algorithmic peg broke. Major lesson: algorithmic stablecoins without sufficient backing are fragile.
+- Most pure algorithmic designs have failed or been abandoned post-Terra
 
-`seigniorage` - Revenue or a profit taken from the minting of coins; the difference between the face value of money, such as a $10 bill or a quarter coin, and the cost to produce it. In other words, the cost of producing a currency within a given economy or country is lower than the actual exchange value, which generally accrues to governments that mint the money.   
+**4. Synthetic/Delta-Neutral**
+- **[USDe](https://www.ethena.fi/)** (Ethena) - synthetic dollar using staked ETH + hedged perpetual futures positions
+- Maintains value through delta-neutral strategies rather than direct collateral
 
-[evergreen](https://www.investopedia.com/terms/e/evergreenfunding.asp) - incremental addition of money into a business by investors; the company receives capital on an established schedule or as the need for funds arises. [video](https://www.youtube.com/watch?v=b_-FrtAfqbw)   
+#### Stablecoin Design Trade-offs
 
-[Spot price](https://www.investopedia.com/terms/s/spotprice.asp) - the current price in the marketplace at which a given asset—such as a security, commodity, or currency—can be bought or sold for immediate delivery    
+**[Stablecoin Trilemma](https://www.youtube.com/live/x-3PWe5dAQY?feature=share):** A stablecoin can only achieve 2 of 3:
+1. **Decentralization** - no central point of control/failure
+2. **Capital Efficiency** - low collateralization ratio
+3. **Price Stability** - maintains tight peg
 
-[Spot Price Manipulation](https://consensys.github.io/smart-contract-best-practices/attacks/oracle-manipulation/) - A smart contract needs to determine the price of an asset, e.g., when a user deposits ETH into its system. To achieve this price discovery, the protocol consults its respective Uniswap pool as a source. Exploiting this behavior, an attacker can take out a flash loan to drain one side of the Uniswap pool. Due to the lack of data source diversity, the protocol's internal price is directly manipulated, e.g., to 100 times the original value. The attacker can now perform an action to capture this additional value. For example, an arbitrage trade on top of the newly created price difference or an advantageous position in the system can be gained.   
+Examples:
+- USDC: Capital Efficient, Stable, Centralized
+- DAI: Decentralized, Stable,  Capital Inefficient (150%+ collateralization)
+- UST (failed): Decentralized, Capital Efficient, Unstable
+
+#### Key Concepts
+
+- **Soft peg** - value maintained within a range (e.g., $0.99-$1.01) rather than exactly $1.00
+- **Rebase** - algorithmic supply adjustment (adding tokens to maintain peg)
+- **Debase** - algorithmic supply reduction (removing/burning tokens)
+- **Seigniorage** - profit from issuing currency (face value minus production cost). In crypto: protocol revenue from stablecoin minting/stability fees
+- **Depeg risk** - when a stablecoin loses its peg (USDC briefly hit $0.87 during March 2023 banking crisis)
+
+#### Oracle & Price Manipulation Risks
+
+** Vulnerable Pattern (Spot Price Oracle):**
+```solidity
+// DON'T DO THIS - single-block price can be manipulated
+uint256 price = IUniswapV2Pair(pair).getReserves();
+```
+
+**Flash Loan Attack Vector:**
+1. Attacker takes flash loan to manipulate AMM pool reserves
+2. Protocol reads manipulated spot price from pool
+3. Attacker profits from mispriced collateral/liquidations
+4. Attacker repays flash loan in same transaction
+
+** Best Practices for Price Oracles:**
+
+1. **Use Time-Weighted Average Price (TWAP)**
+   - Uniswap V3: [`observe()`](https://docs.uniswap.org/contracts/v3/reference/core/interfaces/pool/IUniswapV3PoolState#observe) with sufficient `secondsAgo`
+   - Minimum 10-30 minute TWAP to prevent single-block manipulation
+
+2. **Use Decentralized Oracle Networks**
+   - [Chainlink Price Feeds](https://docs.chain.link/data-feeds) - aggregated data from multiple sources
+   - [Chronicle](https://chroniclelabs.org/) - Maker's oracle solution
+   - [Pyth Network](https://pyth.network/) - high-frequency price feeds
+
+3. **Multi-Source Price Aggregation**
+   - Average prices from multiple DEXs and oracles
+   - Implement circuit breakers for price deviation
+
+4. **Observation Cardinality** (Uniswap V3)
+   - Increase cardinality for longer TWAP history
+   - Check [`slot0.observationCardinality`](https://docs.uniswap.org/contracts/v3/reference/core/interfaces/pool/IUniswapV3PoolState#slot0) before relying on pool oracles
+
+5. **Heartbeat & Staleness Checks**
+   - Verify oracle data freshness (e.g., < 1 hour old)
+   - Implement fallback price sources
+
+**Resources:**
+- [Oracle Manipulation Attacks](https://consensys.github.io/smart-contract-best-practices/attacks/oracle-manipulation/) (ConsenSys Best Practices)
+- [Chainlink Oracle Security](https://medium.com/cyfrin/chainlink-oracle-defi-attacks-93b6cb6541bf) - common attack vectors   
 
 ----- 
 
@@ -590,11 +935,31 @@ Understanding these traditional finance manipulation tactics helps identify simi
     
 -----
 ### Wallets
-[Rabby](https://rabby.io/)   
-[Metamask](https://metamask.io/)   
-[Loopring](https://wallet.loopring.io/)   
-[Ledger](https://www.ledger.com/)   
-[Phantom]
+
+**Browser & Mobile Wallets:**
+- [Rabby](https://rabby.io/) - multi-chain wallet with DeFi-focused UI, built-in security checks, and transaction pre-execution simulation
+- [MetaMask](https://metamask.io/) - most popular Ethereum wallet, browser extension and mobile app
+- [Phantom](https://phantom.com/) - self-custodial wallet for Solana and EVM chains, NFT gallery, swap functionality, scam detection
+- [Rainbow](https://rainbow.me/) - Ethereum wallet with beautiful UX, built-in swaps, ENS support, NFT showcase
+- [Frame](https://frame.sh/) - native desktop wallet with hardware wallet integration, privacy-focused
+- [Coinbase Wallet](https://www.coinbase.com/wallet) - self-custodial wallet with dApp browser, supports multiple chains
+- [Zerion](https://zerion.io/) - wallet and portfolio tracker with DeFi protocol integrations
+
+**Hardware Wallets:**
+- [Ledger](https://www.ledger.com/) - industry-standard hardware wallet (Nano S Plus, Nano X, Stax)
+- [Trezor](https://trezor.io/) - open-source hardware wallet with strong security reputation
+- [Tangem](https://tangem.com/) - card-style NFC hardware wallet (battery-free), supports 14,000+ assets across 85+ chains
+- [SafePal S1](https://www.safepal.com/safepal-s1) - fully offline cold wallet (no USB/WiFi/Bluetooth), affordable
+- [GridPlus Lattice1](https://gridplus.io/) - always-online hardware wallet with large touchscreen
+
+**Smart Contract Wallets:**
+- [Safe](https://safe.global/) (formerly Gnosis Safe) - multi-sig smart contract wallet for teams and DAOs
+- [Argent](https://www.argent.xyz/) - smart contract wallet with social recovery, guardian system
+- [Loopring Wallet](https://wallet.loopring.io/) - zkRollup L2 wallet with low fees and built-in DEX
+
+**Bitcoin-Focused:**
+- [Bitkey](https://bitkey.world/) - multisig self-custody by Block, Inc. (mobile + hardware + recovery)
+- [Sparrow](https://sparrowwallet.com/) - Bitcoin-only desktop wallet for advanced users, hardware wallet integration
 
 -----
 ## Teams to Connect With  
@@ -618,14 +983,11 @@ Understanding these traditional finance manipulation tactics helps identify simi
 ## Abstracts: In Depth Understanding
 Bitcoin [whitepaper](https://bitcoin.org/bitcoin.pdf)     
 Ethereum [whitepaper](https://ethereum.org/en/whitepaper/) (periodically updated)   
-Uniswap V3 [whitepaper](https://uniswap.org/whitepaper-v3.pdf)   
-
-[Merkle Trees](https://en.wikipedia.org/wiki/Merkle_tree)      
+Uniswap V3 [whitepaper](https://uniswap.org/whitepaper-v3.pdf)      
 
 [Improving the Efficiency and Reliability of Digital Time-Stamping](http://math.columbia.edu/~bayer/papers/Timestamp_BHS93.pdf)       
 [Secure Names for Bit-Strings](https://nakamotoinstitute.org/static/docs/secure-names-bit-strings.pdf)      
 [Anonymous Payments Lecture](https://www.youtube.com/watch?v=Z0s4W3UBxM8)
-
 [Academic Smart_Contract_Papers](https://github.com/hzysvilla/Academic_Smart_Contract_Papers)    
 
 ----- 
